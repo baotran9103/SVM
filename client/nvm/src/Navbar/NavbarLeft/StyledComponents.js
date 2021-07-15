@@ -4,6 +4,9 @@ import {theme} from '../../utils/Theme'
 
 export const NavLinks = styled.div`
     display: flex;
+    @media screen and  (max-width:768px){
+        display: none;
+    }
 
 `
 

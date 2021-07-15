@@ -18,3 +18,7 @@ export const Navbar_logo = styled.div`
     white-space: nowrap;
     cursor: pointer;
 `
+export const MenuContainer = styled.div`
+    width: 2rem;
+    height: 2rem;
+`

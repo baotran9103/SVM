@@ -8,15 +8,23 @@ export const ContentContainer = styled.div`
 export const ContentImage = styled.img`
     max-width: 500px;
     width:100%;
+    @media screen and  (max-width:768px){
+        display: none;
+    }
 `
 export const Content = styled.div`
+@media screen and  (max-width:768px){
+       padding:0;
+       align-items: center;
+       text-align:center;
+    }
     display: flex;
     padding-left: 100px;
     flex-direction:column;
     line-height:1.2;
-    flex-basis: 0;
     
-    flex-grow: 1;
+    
+  
     div, h5, h6 {
     font-weight: 400;
     margin: 0;
@@ -26,6 +34,7 @@ export const Content = styled.div`
 
         }
     }
+    
 }
 `
 
@@ -42,6 +51,12 @@ export const ButtonGroup = styled.div`
     display: flex;
     justify-content:flex-start;
     align-items:center;
+    @media screen and  (max-width:768px){
+        display: grid;
+        align-items: center;    
+        justify-items:center;
+        row-gap:2rem;
+    }
     
 `
 

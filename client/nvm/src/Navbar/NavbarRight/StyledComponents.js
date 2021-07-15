@@ -5,6 +5,9 @@ export const NavContainer = styled.div`
     display: flex;
     justify-content: flex-end;
     padding:1rem;
+    @media screen and  (max-width:768px){
+        display: none;
+    }
 `
 
 export const StickerInfo =styled.div`
@@ -53,6 +56,7 @@ export const SearchButton = styled.div`
     border:1px solid;
     padding:0.25rem 0.75rem;
     transition:all 0.3s ease;
+    margin-left:0.5rem;
     :hover{
         background:${theme.colors.green};
         color:#fff;
