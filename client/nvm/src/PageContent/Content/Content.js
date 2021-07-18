@@ -1,7 +1,11 @@
 import React from 'react'
-import {ContentContainer,ContentImage,Content as Cont,ButtonBound,ButtonGroup,ImageButton} from './StyledComponents'
+import {ContentContainer,ContentImage,Content as Cont,ButtonBound,ButtonGroup,ImageButton,RecentlyFarmButton} from './StyledComponents'
+import RecentlyFarm  from './RecentlyFarm'
+import data from '../data/MOCK_DATA.json'
 function Content() {
+    console.log(data)
     return (
+        <div>
         <ContentContainer>
             <ContentImage src='/hero.png' alt="" />
             <Cont>
@@ -19,8 +23,14 @@ function Content() {
 
                 </ButtonGroup>
             </Cont>
-            
+
         </ContentContainer>
+        <RecentlyFarm data = {data}/>
+        <div style={{display:'flex',justifyContent:'center',margin:'2rem 0'}}>
+        <RecentlyFarmButton to='/'> View More</RecentlyFarmButton>
+
+        </div>
+        </div>
     )
 }
 

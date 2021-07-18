@@ -21,4 +21,8 @@ export const Navbar_logo = styled.div`
 export const MenuContainer = styled.div`
     width: 2rem;
     height: 2rem;
+    cursor: pointer;
+    @media screen and (min-width:768px){
+        display: none;
+    }
 `

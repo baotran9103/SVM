@@ -12,6 +12,7 @@ export const theme = {
     cyan: "#17a2b8",
     white: "#fff",
     gray: "#6c757d",
+    lightgray: "lightgray",
     graydark: "#343a40",
     primary: "#007bff",
     secondary: "#6c757d",
@@ -26,5 +27,7 @@ export const theme = {
     breakpointmd: "768px",
     breakpointlg: "992px",
     breakpointxl: "1200px",
+    brightgreen:'#03b000',
+    black:'#0d0d0d'
   },
 };

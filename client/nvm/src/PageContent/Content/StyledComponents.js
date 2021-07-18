@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import {theme} from '../../utils/Theme'
+import  {Link as LinkR} from 'react-router-dom'
 export const ContentContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content:space-around;
+    
 `
 export const ContentImage = styled.img`
     max-width: 500px;
@@ -64,12 +66,12 @@ export const ButtonBound = styled.div`
     display: flex;
     align-items:center;
     justify-content:center;
-    width: 200px;
+    width: 100px;
     padding:1rem 2rem;
     cursor:pointer;
     color:#fff;
-    background: ${theme.colors.green};
-    border-radius:1rem;
+    background: ${theme.colors.brightgreen};
+    border-radius:5px;
     /* :hover{
         background:#fff;
         color: ${theme.colors.green};
@@ -81,4 +83,18 @@ export const ImageButton = styled.image`
     width: 100px;
     height: 100%;
     object-fit:contain; 
+`
+export const RecentlyFarmButton = styled(LinkR)`
+    width: 100px;
+    border-radius:5px;
+    color:#fff;
+    background:${theme.colors.brightgreen};
+    padding:1rem 2rem;
+    margin:auto;
+    text-decoration:none;
+    text-align:center;
+    cursor:pointer;
+    :hover{
+        opacity:0.9
+    }
 `

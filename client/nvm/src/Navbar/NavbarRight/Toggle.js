@@ -2,14 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { Toggle as Tog } from "react-toggle";
 import {theme} from '../../utils/Theme'
+import {useSelector} from 'react-redux'
+import {ChangethemeEvent} from '../../Functions/UtilsFunctions'
 
 function Toggle() {
   const [isactive, setisactive] = React.useState(false);
+  const Darkmode = useSelector(state => state.Utils.Darkmode)
   return (
     <ToggleSwitch>
       {/* <Tog /> */}
-      <Switch isactive={isactive} onClick={()=>setisactive(!isactive)}>
-        <Slider isactive={isactive} />
+      <Switch isactive={Darkmode} onClick={()=>ChangethemeEvent(!Darkmode)}>
+        <Slider isactive={Darkmode} />
       </Switch>
       <div>DarkMode</div>
     </ToggleSwitch>
@@ -25,7 +28,7 @@ const ToggleSwitch = styled.div`
   margin:0 0.5rem;
 `;
 const Switch = styled.div`
-  background-color:  ${({isactive})=>(isactive?theme.colors.green:theme.colors.gray)} ;
+  background-color:  ${({isactive})=>(isactive?theme.colors.green:theme.colors.lightgray)} ;
   border-radius: 28px;
   height: 28px;
   transition: background-color 0.2s ease-out;
