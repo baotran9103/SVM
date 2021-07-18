@@ -45,7 +45,7 @@ top:0;
 left:0;
 width:100%;
 object-fit:contain;
-/* height:auto; */
+height:100%;
 background: ${({Darkmode}) => Darkmode ? theme.colors.black:theme.colors.white};
 /* min-height:100vh; */
 max-width:100vw;

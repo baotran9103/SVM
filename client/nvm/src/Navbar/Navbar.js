@@ -7,7 +7,7 @@ import {Menu} from '../utils/Icons'
 function Navbar(props) {
     return (
         <NavBarContainer>
-            <Navbar_logo>SVM Pool</Navbar_logo>
+            <Navbar_logo>Vast Pool</Navbar_logo>
             <NavbarLeft />
             <div style={{marginRight:'auto'}}></div>
             <NavbarRight />

@@ -98,3 +98,8 @@ export const RecentlyFarmButton = styled(LinkR)`
         opacity:0.9
     }
 `
+export const ChartContainer = styled.div`
+    @media screen and (max-width: 768px){
+        padding:0 1rem ;
+    }
+`
