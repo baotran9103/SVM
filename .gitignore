@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+dev/
+test/
+aiohttp-demos/
+chia-blockchain/
+pool-reference/
+pool-reference
+pool-reference2/
