@@ -2,10 +2,14 @@ import logo from './logo.svg';
 import React from 'react'
 import styled from 'styled-components'
 import Navbar from './Navbar/Navbar'
-import PageContent from './PageContent/PageContent'
+import Footer from './Footer/Footer'
+import PageContent from './FrontPage/PageContent'
+import ViewAllFarm from './FrontPage/Content/ViewAllFarm'
+import AccountPage from './AccountPage/AccountPage'
 import Sidebar from './Navbar/Sidebar/Sidebar'
 import {useSelector} from 'react-redux'
 import {theme} from './utils/Theme'
+import {Route,Switch} from 'react-router-dom'
 function App() {
   const Darkmode = useSelector(state => state.Utils.Darkmode)
   const [sidebar, setsidebar] = React.useState(false)
@@ -13,7 +17,22 @@ function App() {
     <AppContainer Darkmode = {Darkmode}>
       <Navbar sidebar={sidebar} setsidebar={setsidebar}/>
       <Sidebar sidebar={sidebar} />
+      <Switch>
+     
+      <Route path="/account/:launcherid">
+        <AccountPage />
+      </Route>
+      <Route path="/viewallfarmed">
+        <ViewAllFarm />
+      </Route>
+      <Route exact path="/">
       <PageContent />
+      </Route>
+      <Route exact path="*">
+      <PageContent />
+      </Route>
+    </Switch>
+      <Footer />
       <BackgroundImage Darkmode = {Darkmode}  src="/background-landing.png" alt="" />
     </AppContainer>
   );

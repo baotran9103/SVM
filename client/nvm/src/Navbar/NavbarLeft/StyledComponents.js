@@ -9,7 +9,12 @@ export const NavLinks = styled.div`
     }
 
 `
-
+export const NavDiscord = styled.a`
+    text-decoration: none;
+    padding: 0.5rem;
+    text-align:center;
+    color:${theme.colors.green};
+`
 export const NavLink = styled(LinkR)`
     text-decoration:none;
     padding:0.5rem;

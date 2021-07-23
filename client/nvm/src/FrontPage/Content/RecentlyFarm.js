@@ -3,6 +3,13 @@ import styled from "styled-components";
 import {theme} from '../../utils/Theme'
 
 function RecentlyFarm(props) {
+  const [state, setstate] = React.useState(props.data)
+  React.useEffect(() => {
+    if(props.limit){
+      setstate(props.data.slice(0,props.limit))
+    }
+    
+  }, [])
   return (
     <div style={{margin:'0 1rem '}}>
       <Chartheader> Recently Farmed Chia</Chartheader>
@@ -16,13 +23,13 @@ function RecentlyFarm(props) {
           <ChartitemHidden>Reward</ChartitemHidden>
         </ChartItem>
         {
-            props.data.slice(0,10).map((item,id)=>(
+            state.map((item,id)=>(
                 <ChartItem key={id}>
                     <ChartitemHidden islong={true}>{item.blockNumber}</ChartitemHidden>
 
                     <ChartitemHidden>{item.headerHash}</ChartitemHidden>
 
-                    <Chartitemvisible><a href="">{item.winnerLauncherId}</a></Chartitemvisible>
+                    <Chartitemvisible><a href={`/account/${item.winnerLauncherId}`}>{item.winnerLauncherId}</a></Chartitemvisible>
                     <Chartitemvisible>{item.luck}</Chartitemvisible>
                     <Chartitemvisible>{new Date(item.dateTimeUtc).toLocaleDateString()}</Chartitemvisible>
 

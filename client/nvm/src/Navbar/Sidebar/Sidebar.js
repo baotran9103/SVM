@@ -1,23 +1,29 @@
 import React from 'react'
-import {NavLink} from '../NavbarLeft/StyledComponents'
+import {NavLink,NavDiscord} from '../NavbarLeft/StyledComponents'
 import styled from 'styled-components'
-import { theme } from '../../utils/Theme'
-import {NavContainer,StickerInfo,StickerInfoData,StickerPercent,LauncherinputContainer,LauncherInput,SearchButton} from '../NavbarRight/StyledComponents'
+// import { theme } from '../../utils/Theme'
+import {StickerInfo,StickerInfoData,StickerPercent,LauncherinputContainer,LauncherInput,SearchButton} from '../NavbarRight/StyledComponents'
 import Toggle from '../NavbarRight/Toggle'
 import {useSelector} from 'react-redux'
 function Sidebar(props) {
+    const [launcherid, setlauncherid] = React.useState("")
+    const [showchart, setshowchart] = React.useState(false)
     const Darkmode = useSelector(state => state.Utils.Darkmode)
+    function InputChangeHandler(e){
+        e.preventDefault();
+        setlauncherid(e.target.value)
+    }
     return (
         <SidebarContainer  sidebar={props.sidebar}>
             <LinksContainer Darkmode={Darkmode}>
        
            
              <NavLink to='/'>Home</NavLink>
-            <NavLink to='/'>Discord</NavLink>
+            <NavDiscord href='https://discord.gg/hq5HKjYn2G' target='_blank'>Discord</NavDiscord>
             <NavLink to='/'>LeaderBoard</NavLink>
             <div style={{display:'flex'}}>
             <Toggle />
-            <StickerInfo>
+            <StickerInfo href='https://coinmarketcap.com/currencies/chia-network/' >
                 <StickerInfoData> XCH $231.79</StickerInfoData>
                 <StickerPercent ispositive={1.16>0}>1.16%</StickerPercent>
                 
@@ -25,10 +31,10 @@ function Sidebar(props) {
             </StickerInfo>
             </div>
             <LauncherinputContainer>
-                <LauncherInput  type='text' placeholder='Launcher Id or alias'/>
+                <LauncherInput value={launcherid}  onChange={InputChangeHandler} type='text' placeholder='Launcher Id or alias'/>
 
             </LauncherinputContainer>
-            <SearchButton> Search</SearchButton>
+            <SearchButton to={`/account/${launcherid}`}> Search</SearchButton>
             </LinksContainer>
            
 
