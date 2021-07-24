@@ -6,6 +6,7 @@ import Footer from './Footer/Footer'
 import PageContent from './FrontPage/PageContent'
 import ViewAllFarm from './FrontPage/Content/ViewAllFarm'
 import AccountPage from './AccountPage/AccountPage'
+import LeaderBoard from './LeaderBoard/LeaderBoard'
 import Sidebar from './Navbar/Sidebar/Sidebar'
 import {useSelector} from 'react-redux'
 import {theme} from './utils/Theme'
@@ -24,6 +25,9 @@ function App() {
       </Route>
       <Route path="/viewallfarmed">
         <ViewAllFarm />
+      </Route>
+      <Route path="/leaderboard">
+        <LeaderBoard />
       </Route>
       <Route exact path="/">
       <PageContent />

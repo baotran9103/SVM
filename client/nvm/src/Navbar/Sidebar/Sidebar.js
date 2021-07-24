@@ -20,7 +20,7 @@ function Sidebar(props) {
            
              <NavLink to='/'>Home</NavLink>
             <NavDiscord href='https://discord.gg/hq5HKjYn2G' target='_blank'>Discord</NavDiscord>
-            <NavLink to='/'>LeaderBoard</NavLink>
+            <NavLink to='/leaderboard'>LeaderBoard</NavLink>
             <div style={{display:'flex'}}>
             <Toggle />
             <StickerInfo href='https://coinmarketcap.com/currencies/chia-network/' >

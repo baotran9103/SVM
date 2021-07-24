@@ -5,7 +5,7 @@ function NavbarLeft() {
         <NavLinks>
             <NavLink to='/'>Home</NavLink>
             <NavDiscord href='https://discord.gg/hq5HKjYn2G' target='_blank'>Discord</NavDiscord>
-            <NavLink to='/'>LeaderBoard</NavLink>
+            <NavLink to='/leaderboard'>LeaderBoard</NavLink>
             {/* <NavDropdown >
                 <div>Language</div>
                 <div></div>
