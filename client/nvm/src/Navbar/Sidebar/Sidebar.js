@@ -24,7 +24,7 @@ function Sidebar(props) {
             <div style={{display:'flex'}}>
             <Toggle />
             <StickerInfo href='https://coinmarketcap.com/currencies/chia-network/' >
-                <StickerInfoData> XCH $231.79</StickerInfoData>
+                <StickerInfoData Darkmode={Darkmode}> XCH $231.79</StickerInfoData>
                 <StickerPercent ispositive={1.16>0}>1.16%</StickerPercent>
                 
                 
@@ -49,6 +49,7 @@ export const SidebarContainer = styled.div`
     display: flex;   
     height:${({sidebar})=> sidebar?'100%':'0'};
     opacity:${({sidebar})=> sidebar?'1':'0'};
+    z-index:${({sidebar})=> sidebar?'100':'-1'};
     transform: ${({sidebar})=> sidebar?'translate(0,0)':'translateY(-120%)'};
     transition:all 0.4s ease-in-out;
     position:relative;

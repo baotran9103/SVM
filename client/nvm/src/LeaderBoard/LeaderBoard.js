@@ -1,6 +1,7 @@
 import React from "react";
 import {useSelector} from 'react-redux'
-
+import LoadingPage from '../utils/LoadingPage'
+import ErrorPage from '../utils/ErrorPage'
 import { results, poolStats } from "./Data";
 import {
   PageContainer,
@@ -9,7 +10,26 @@ import {
   LeaderBoardTable,
   TableHeader,TableItem
 } from "./StyledComponents";
+import { useQueries} from 'react-query'
+
 function LeaderBoard() {
+  const info = useQueries([
+    {queryKey:'poolInfo',queryFn:() => 
+    fetch(
+      "https://api.vastpool.net/pool/info"
+    ).then((res) => res.json())
+  },
+    {queryKey:'LeaderBoard',queryFn:
+    () =>
+    fetch(
+      "https://api.vastpool.net/farmer/leaderboard"
+    ).then((res) => res.json())
+  },
+    
+  ])
+
+ 
+      console.log(info)
   function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -50,44 +70,50 @@ function LeaderBoard() {
       
   }
   const Darkmode = useSelector(state => state.Utils.Darkmode)
-  console.log(Darkmode)
+  
+  if(info[0].isLoading || info[1].isLoading ){
+    return (<LoadingPage />)
+  }else if (info[0].isError || info[1].isError){
+    return (<ErrorPage />)
+  }
+
   return (
-    <PageContainer>
+    <PageContainer Darkmode={Darkmode}>
       <h4>Leaderboard</h4>
-      <PoolStat>
-        <PoolStatValueWrapper>
+      <PoolStat Darkmode={Darkmode}>
+        {/* <PoolStatValueWrapper>
           <div>Global Netspace</div>
-          <div>{getPlotSize(poolStats.totalNetSpaceTiB*1000 )} </div>
-        </PoolStatValueWrapper>
+          <div>{getPlotSize(info[0].data.netspaceRaw )} </div>
+        </PoolStatValueWrapper> */}
         <PoolStatValueWrapper>
           <div>Pool Netspace</div>
-          <div>{getPlotSize(poolStats.poolNetSpaceTiB*1000) } </div>
+          <div>{info[0].data.poolSpace + " " + info[0].data.poolSpaceUnit} </div>
         </PoolStatValueWrapper>
         <PoolStatValueWrapper>
           <div>Global Points</div>
-          <div>{numberWithCommas(poolStats.globalPendingPoints)}</div>
+          <div>{numberWithCommas(info[0].data.poolTotalPoints)}</div>
         </PoolStatValueWrapper>
       </PoolStat>
-      <LeaderBoardTable>
-        <TableHeader>
+      <LeaderBoardTable Darkmode={Darkmode}>
+        <TableHeader Darkmode={Darkmode}>
           <div>Rank</div>
           <div>Farmer</div>
-          <div>Plot Size</div>
+          {/* <div>Plot Size</div> */}
           <div className="leaderboard_hidden">Difficulty</div>
           <div>Points</div>
-          <div className="leaderboard_hidden">Joined</div>
+          {/* <div className="leaderboard_hidden">Joined</div> */}
         </TableHeader>
         {
-            results.map((item,id)=>(
+            info[1].data.map((item,id)=>(
                 <TableItem key={id}>
-                    <div># {item.rank}</div>
+                    <div># {id+1}</div>
                     <a Darkmode={Darkmode} href ={`/account/${item.launcherId}`} className="launcher_id">{item.launcherId}</a>
-                    <div>{getPlotSize(item.estimatedPlotSizeTiB*1000)}</div>
-                    <div className='leaderboard_hidden'>{item.lastDifficulty}</div>
-                    <div>{numberWithCommas(item.pendingPoints)}</div>
-                    <div className='leaderboard_hidden'>{(
+                    {/* <div>{getPlotSize(item.estimatedPlotSizeTiB*1000)}</div> */}
+                    <div className='leaderboard_hidden'>{item.difficulty}</div>
+                    <div>{numberWithCommas(item.points)}</div>
+                    {/* <div className='leaderboard_hidden'>{(
                   getJointDays(item.joinDateTimeUtc)
-                        )}</div>
+                        )}</div> */}
 
                 </TableItem>
             ))
