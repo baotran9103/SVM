@@ -13,6 +13,9 @@ import ChartPopUp from "./ChartPopUp";
 import { useSelector } from "react-redux";
 import { useQuery } from "react-query";
 import axios from 'axios'
+import LoadingPage from '../../utils/LoadingPage'
+import ErrorPage from '../../utils/ErrorPage'
+
 function NavbarRight() {
   const [launcherid, setlauncherid] = React.useState("");
   const [showchart, setshowchart] = React.useState(false);
@@ -25,8 +28,8 @@ function NavbarRight() {
     }
   };
   
-//   const { data, isLoading, isError } = useQuery("ChiaPrice", () =>axios(config).then(res=>res.data)
-//   );
+  const { data, isLoading, isError } = useQuery("ChiaPrice", ()=> fetch(`https://xchscan.com/api/chia-price`).then((res) => res.json())
+  );
 
   function InputChangeHandler(e) {
     e.preventDefault();
@@ -36,7 +39,11 @@ function NavbarRight() {
     console.log(launcherid);
   }
   const apikey = "4896458c-8163-4bc0-8807-b6be27c405ce";
-
+  if(isLoading ){
+    return (<LoadingPage />)
+  }else if (isError ){
+    return (<ErrorPage />)
+  }
   return (
     <NavContainer>
       <Toggle />
@@ -45,8 +52,8 @@ function NavbarRight() {
         onMouseEnter={() => setshowchart(true)}
         onMouseLeave={() => setshowchart(false)}
       >
-        <StickerInfoData Darkmode={Darkmode}> XCH $231.79</StickerInfoData>
-        <StickerPercent ispositive={1.16 > 0}>1.16%</StickerPercent>
+        <StickerInfoData Darkmode={Darkmode}> ${data.usd}</StickerInfoData>
+        <StickerPercent ispositive={1.16 > 0}>USD/XCH</StickerPercent>
         <ChartPopUp showchart={showchart} />
       </StickerInfo>
       <LauncherinputContainer>

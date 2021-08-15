@@ -69,7 +69,7 @@ function numberWithCommas(x) {
   return (
     <div>
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>
-        <h3 style={{textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>{`0x${launcherid}`}</h3>
+        <h3 style={{textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>{`${launcherid}`}</h3>
 
         </div>
       
