@@ -37,7 +37,7 @@ const Tab = styled.div`
     color: ${({isActive})=> isActive ? `${theme.colors.white}`:''};
     padding:0.5rem 1rem;
     cursor: pointer;
-    background:${({isActive})=> isActive ? `${theme.colors.green}`:'transparent'};
+    background:${({isActive})=> isActive ? `${theme.colors.primary}`:'transparent'};
     border-top-left-radius: 0.5rem;
     border-top-right-radius: 0.5rem;
     border: ${({isActive})=> isActive ? `1px solid ${theme.colors.gray}`:'1px solid transparent'};

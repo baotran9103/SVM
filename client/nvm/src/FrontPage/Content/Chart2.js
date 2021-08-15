@@ -8,7 +8,8 @@ import {
   CartesianGrid,
   Tooltip, ResponsiveContainer
 } from "recharts";
-
+import styled from  'styled-components'
+import {theme} from '../../utils/Theme'
 const data = [
   {
     name: "Page A",
@@ -57,6 +58,7 @@ const data = [
 export default function App(props) {
   console.log(
 props.data)
+
   return (
     <div style={{width: '100%',height: '100%'}}>
     <ResponsiveContainer width="100%" height={400}>
@@ -72,28 +74,29 @@ props.data)
       }}
     >
      
-      <XAxis dataKey="date" axisLine={false} tickLine={false}
-        tickFormatter={
+      <XAxis dataKey="date" 
+         tickFormatter={
           (str)=>{
-            console.log( new Date(str).getTime())
+            
             const d = new Date(str)
             if(d.getTime()%11!==0){
-              return d.toLocaleTimeString()
+              return d.toLocaleDateString()
             }
             return ""
           }
         }
       />
       <YAxis />
-      <Tooltip />
+      <Tooltip content={<CustomTooltip units = {props.data.length >0 ?props.data.slice(-1)[0].poolSpaceUnit:''} />} />
+    
       <Area
         type="monotone"
-        dataKey="naPoolNetSpaceTiB"
+        dataKey="poolSpace"
         stackId="1"
-        stroke="#8884d8"
-        fill="#2a6a4b"
+        stroke={`${theme.colors.primary}`}
+        fill="transparent"
       />
-      <Area
+      {/* <Area
         type="monotone"
         dataKey="euPoolNetSpaceTiB"
         stackId="1"
@@ -107,7 +110,32 @@ props.data)
         stroke="#ffc658"
         fill="#183c2b
         "
-      />
+      /> */}
     </AreaChart></ResponsiveContainer></div>
   );
 }
+
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+const ToolTipContainer = styled.div`
+display: flex;
+background:#d6e5de;
+color: gray;
+padding:1rem;
+border-radius:10px;
+`
+
+const CustomTooltip = (props) => {
+
+	if (props.active) {
+		return (
+			<ToolTipContainer className="custom-tooltip">
+				<p className="label">{`Pool Space: ${numberWithCommas(props.payload[0].value)} ${props.units}`}</p>
+				
+			</ToolTipContainer>
+		);
+	}
+
+	return null;
+};

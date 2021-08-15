@@ -28,7 +28,7 @@ const ToggleSwitch = styled.div`
   margin:0 0.5rem;
 `;
 const Switch = styled.div`
-  background-color:  ${({isactive})=>(isactive?theme.colors.green:theme.colors.lightgray)} ;
+  background-color:  ${({isactive})=>(isactive?theme.colors.primary:theme.colors.gray)} ;
   border-radius: 28px;
   height: 28px;
   transition: background-color 0.2s ease-out;

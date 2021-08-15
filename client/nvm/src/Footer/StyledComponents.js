@@ -6,6 +6,7 @@ export const FooterContainer = styled.div`
     justify-content: center;
     flex-direction:column;
     padding:2rem;
+    background:${({Darkmode}) => Darkmode? 'transparent':   theme.colors.secondary};
     
     
 `
@@ -23,7 +24,7 @@ export const FooterLinks = styled.div`
 export const FooterLink = styled(LinkR)`
         padding: 1rem;
         background:transparent;
-        color: ${theme.colors.green};
+        color: ${theme.colors.primary};
         text-decoration:none;
         :hover{
             opacity: 0.8

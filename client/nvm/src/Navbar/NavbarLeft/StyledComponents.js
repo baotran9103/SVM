@@ -13,13 +13,13 @@ export const NavDiscord = styled.a`
     text-decoration: none;
     padding: 0.5rem;
     text-align:center;
-    color:${theme.colors.green};
+    color:${theme.colors.primary};
 `
 export const NavLink = styled(LinkR)`
     text-decoration:none;
     padding:0.5rem;
     text-align:center;
-    color:${theme.colors.green};
+    color:${theme.colors.primary};
 `
 
 export const NavDropdown = styled.div`

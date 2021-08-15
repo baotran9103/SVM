@@ -1,5 +1,10 @@
 export const theme = {
   colors: {
+    primary:"#ff8723",
+    secondary:'#e1d8d8',
+
+    goodColor:'#2d7533',
+    badColor:'#ff5858',
     blue: "#007bff",
     indigo: "#6610f2",
     purple: "#6f42c1",
@@ -14,8 +19,7 @@ export const theme = {
     gray: "#6c757d",
     lightgray: "lightgray",
     graydark: "#343a40",
-    primary: "#007bff",
-    secondary: "#6c757d",
+   
     success: "#28a745",
     info: "#17a2b8",
     warning: "#ffc107",

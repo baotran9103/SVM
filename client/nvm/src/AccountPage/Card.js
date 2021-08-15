@@ -5,19 +5,30 @@ import { theme } from "../utils/Theme";
 
 function Card(props) {
 //   console.log(props.value);
-  const [toggle, settoggle] = useState(false)
+  // const [toggle, settoggle] = useState(false)
+  function ClickEvent(){
+    if(props.index === props.currentCard){
+      
+      props.setcurrentCard(-1)
+
+    }else{
+     
+    props.setcurrentCard(props.index)
+
+    }
+  }
   return (
     <CardContainer>
       <CardValue>{props.value}</CardValue>
       <CardLabel>
         <CardLabelInfo>{props.label}</CardLabelInfo>
-        <CardLabelToolTip>
-            <div onClick={() => settoggle(!toggle)}>
+        <CardLabelToolTip >
+            <div onClick={() => ClickEvent()} >
             <Circle />
 
             </div>
-            <ToolTip
-            toggle={toggle}
+            <ToolTip  isActive = {props.index === props.currentCard}
+           
           title={props.tooltipTitle}
           info={props.tooltipDescription}
         />
@@ -46,7 +57,7 @@ align-items: center;
 `;
 const CardValue = styled.div`
   font-size: 28px;
-  color: #03b000;
+  color: ${theme.colors.primary};
 `;
 const CardLabel = styled.div`
 margin:1rem;
@@ -56,7 +67,7 @@ margin:1rem;
 `;
 const CardLabelToolTip = styled.div`
     margin-left:1rem;
-    display:flex;
+    display:  flex ;
     flex-direction: column;
     position: relative;
 `

@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 function ToolTip(props) {
   return (
-    <ToolTipContainer toggle={props.toggle}>
+    <ToolTipContainer isActive={props.isActive} toggle={props.toggle}>
       {/* <Arrow /> */}
-      <ToolTipBody>
+      <ToolTipBody isActive={props.isActive}>
         <Header>{props.title}</Header>
         <div>{props.info}</div>
       </ToolTipBody>
@@ -16,12 +16,15 @@ function ToolTip(props) {
 export default ToolTip;
 
 const ToolTipContainer = styled.div`
+  /* display:  ${({isActive}) => isActive ? 'block':'none'} ; */
   position: absolute;
   top: 1.5rem;
   left: -50%;
-  transform: ${({toggle})=> toggle ? 'translatex(-60%)':'translatex(-100%)'};; ;
-  z-index: ${({toggle})=> toggle ? '1000':'-1'};;
-    opacity: ${({toggle})=> toggle ? '1':'0'};
+  transform:translatex(-60%);
+  /* transform: ${({isActive})=> isActive ? 'translatex(-60%)':'translatex(-100%)'}; */
+  z-index: ${({isActive})=> isActive ? '1000':'-1'};;
+    opacity: ${({isActive})=> isActive ? '1':'0'};
+    /* height: ${({isActive})=> isActive ? '100':'0%'}; */
     transition:all 0.3s ease-in-out;
   /* max-width: 276px; */
   color: #212529;
@@ -87,6 +90,8 @@ const ToolTipBody = styled.div`
     flex-direction: column;
     width: 100%;
     min-width: 200px;
+    height: ${({isActive})=> isActive ? '100%':'0%'};
+  transition:all 0.3s ease-in-out;
    h3,div{
        padding:1rem;
    }

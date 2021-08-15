@@ -5,6 +5,7 @@ export const NavContainer = styled.div`
     display: flex;
     justify-content: flex-end;
     padding:1rem;
+
     @media screen and  (max-width:768px){
         display: none;
     }
@@ -26,7 +27,7 @@ export const StickerInfoData = styled.div`
 `
 
 export const StickerPercent = styled.div`
-    color: ${({ispositive})=> ispositive?theme.colors.green:theme.colors.red}
+    color: ${({ispositive})=> ispositive?theme.colors.primary:theme.colors.red}
 `
 
 export const LauncherinputContainer = styled.div`
@@ -52,7 +53,7 @@ export const SearchButton = styled(LinkR)`
     display: flex;
     background: transparent;
     text-decoration:none;
-    color: ${theme.colors.green};
+    color: ${theme.colors.primary};
     cursor: pointer;
     align-items:center;
     justify-content: center;
@@ -62,7 +63,7 @@ export const SearchButton = styled(LinkR)`
     transition:all 0.3s ease;
     margin-left:0.5rem;
     :hover{
-        background:${theme.colors.green};
+        background:${theme.colors.primary};
         color:#fff;
     }
 `

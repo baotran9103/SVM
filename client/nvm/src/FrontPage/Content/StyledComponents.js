@@ -32,7 +32,7 @@ export const Content = styled.div`
     margin: 0;
     h4{
         span{
-            color:${theme.colors.green}
+            color:${theme.colors.primary}
 
         }
     }
@@ -45,7 +45,7 @@ export const Content = styled.div`
 export const ContentInfo = styled.div`
 font-size:24px;
 span{
-        color:${theme.colors.green}
+        color:${theme.colors.primary}
     }
 `
 
@@ -70,11 +70,12 @@ export const ButtonBound = styled.div`
     padding:1rem 2rem;
     cursor:pointer;
     color:#fff;
-    background: ${theme.colors.brightgreen};
+    /* background: ${theme.colors.brightgreen}; */
+    background: linear-gradient(#fea777,#e37016);
     border-radius:5px;
     /* :hover{
         background:#fff;
-        color: ${theme.colors.green};
+        color: ${theme.colors.primary};
     } */
 `
 
@@ -88,7 +89,9 @@ export const RecentlyFarmButton = styled(LinkR)`
     width: 100px;
     border-radius:5px;
     color:#fff;
-    background:${theme.colors.brightgreen};
+    /* background:${theme.colors.brightgreen}; */
+    background: linear-gradient(#fea777,#e37016);
+
     padding:1rem 2rem;
     margin:auto;
     text-decoration:none;

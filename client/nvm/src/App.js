@@ -24,7 +24,7 @@ function App() {
         <AccountPage />
       </Route>
       <Route path="/viewallfarmed">
-        <ViewAllFarm />
+        <ViewAllFarm Darkmode = {Darkmode}/>
       </Route>
       <Route path="/leaderboard">
         <LeaderBoard />
@@ -37,7 +37,7 @@ function App() {
       </Route>
     </Switch>
       <Footer />
-      <BackgroundImage Darkmode = {Darkmode}  src="/background-landing.png" alt="" />
+      {/* <BackgroundImage Darkmode = {Darkmode}  src="/background3.jpeg" alt="" /> */}
     </AppContainer>
   );
 }
@@ -51,8 +51,8 @@ const AppContainer = styled.div`
   height:100%;
   width:100%;
 /* background:transparent; */
-/* background: ${({Darkmode}) => Darkmode ? theme.colors.black:theme.colors.white};
-background-image: url('/background-landing.png');
+background: ${({Darkmode}) => Darkmode ? theme.colors.black:theme.colors.white};
+/* background-image: url('/background-landing.png');
 background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

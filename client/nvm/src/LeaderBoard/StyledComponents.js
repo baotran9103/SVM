@@ -73,9 +73,9 @@ export const TableItem = styled.div`
     align-items: center;
     display: flex;
     text-decoration: none;
-    color: ${({ Darkmode }) =>
-      Darkmode ? theme.colors.green : theme.colors.white};
-    color: ${theme.colors.green};
+    /* color: ${({ Darkmode }) =>
+      Darkmode ? theme.colors.primary : theme.colors.black}; */
+    color: ${theme.colors.primary};
     padding: 0.75rem 0;
     text-overflow: ellipsis;
     overflow: hidden;
