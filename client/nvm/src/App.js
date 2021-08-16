@@ -11,13 +11,29 @@ import Sidebar from './Navbar/Sidebar/Sidebar'
 import {useSelector} from 'react-redux'
 import {theme} from './utils/Theme'
 import {Route,Switch} from 'react-router-dom'
+import store from './redux/Store'
+import {getPrice} from './redux/utils/Action'
+import { useQuery } from "react-query";
+
+import LoadingPage from './utils/LoadingPage'
+import ErrorPage from './utils/ErrorPage'
+
 function App() {
   const Darkmode = useSelector(state => state.Utils.Darkmode)
   const [sidebar, setsidebar] = React.useState(false)
+  const { data, isLoading, isError } = useQuery("ChiaPrice", ()=> fetch(`https://xchscan.com/api/chia-price`).then((res) => res.json()),{
+    onSuccess:(res)=> store.dispatch(getPrice(res))
+}
+);
+if(isLoading ){
+  return (<LoadingPage />)
+}else if (isError ){
+  return (<ErrorPage />)
+}
   return (
     <AppContainer Darkmode = {Darkmode}>
-      <Navbar sidebar={sidebar} setsidebar={setsidebar}/>
-      <Sidebar sidebar={sidebar} />
+      <Navbar data={data} sidebar={sidebar} setsidebar={setsidebar}/>
+      <Sidebar data={data} sidebar={sidebar} />
       <Switch>
      
       <Route path="/account/:launcherid">

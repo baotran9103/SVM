@@ -10,16 +10,12 @@ import {
   SearchButton,
 } from "./StyledComponents";
 import ChartPopUp from "./ChartPopUp";
-import { useSelector } from "react-redux";
-import { useQuery } from "react-query";
-import axios from 'axios'
-import LoadingPage from '../../utils/LoadingPage'
-import ErrorPage from '../../utils/ErrorPage'
 
-function NavbarRight() {
+
+function NavbarRight({Darkmode,data}) {
   const [launcherid, setlauncherid] = React.useState("");
   const [showchart, setshowchart] = React.useState(false);
-  const Darkmode = useSelector((state) => state.Utils.Darkmode);
+
   var config = {
     method: 'get',
     url: 'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?symbol=XCH',
@@ -28,9 +24,7 @@ function NavbarRight() {
     }
   };
   
-  const { data, isLoading, isError } = useQuery("ChiaPrice", ()=> fetch(`https://xchscan.com/api/chia-price`).then((res) => res.json())
-  );
-
+  
   function InputChangeHandler(e) {
     e.preventDefault();
     setlauncherid(e.target.value);
@@ -39,11 +33,7 @@ function NavbarRight() {
     console.log(launcherid);
   }
   const apikey = "4896458c-8163-4bc0-8807-b6be27c405ce";
-  if(isLoading ){
-    return (<LoadingPage />)
-  }else if (isError ){
-    return (<ErrorPage />)
-  }
+ 
   return (
     <NavContainer>
       <Toggle />

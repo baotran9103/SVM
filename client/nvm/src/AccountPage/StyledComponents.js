@@ -38,13 +38,22 @@ width:100%;
 
 `
 export const ColumnValue = styled.div`
-    padding-right: 24px;
+    padding-right: 12px;
     overflow: hidden;
     padding: 12px 5px;
     text-overflow: ellipsis;
     white-space: nowrap;
+    position:relative;
+    min-height:40px;
 
-width:100%;
+    width:100%;
+.Coint_amount{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    /* align-items:center; */
+    font-size:0.9rem;
+}
 @media screen and (max-width:768px){
     max-width:60px;
 }

@@ -38,13 +38,13 @@ export const LeaderBoardTable = styled.div`
 export const TableHeader = styled.div`
   display: grid;
   font-weight: bold;
-  grid-template-columns: 1fr 4fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 10fr 1fr 1fr 1fr 1fr;
   margin: 2rem 0;
   justify-items: flex-start;
   column-gap: 1.5rem;
   color: ${({Darkmode})=> Darkmode ? theme.colors.white:theme.colors.black};
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr 4fr 2fr 2fr;
+    grid-template-columns: 1fr 6fr 1fr 1fr;
     padding: 0 0.5rem;
 
     .leaderboard_hidden {
@@ -56,7 +56,7 @@ export const TableHeader = styled.div`
 export const TableItem = styled.div`
   display: grid;
   font-weight: bold;
-  grid-template-columns: 1fr 4fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 10fr 1fr 1fr 1fr 1fr;
   /* margin:2rem 0; */
   border-top: 1px solid #d3d3d3;
   column-gap: 1.5rem;
@@ -79,14 +79,14 @@ export const TableItem = styled.div`
     padding: 0.75rem 0;
     text-overflow: ellipsis;
     overflow: hidden;
-    max-width: 500px;
+    /* max-width: 500px; */
     :hover {
       opacity: 0.8;
     }
   }
 
   @media screen and (max-width: 768px) {
-    grid-template-columns: 1fr 4fr 2fr 2fr;
+    grid-template-columns: 1fr 6fr 1fr 1fr;
     padding: 0 0.5rem;
 
     div {

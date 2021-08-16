@@ -107,7 +107,7 @@ function LeaderBoard() {
             info[1].data.map((item,id)=>(
                 <TableItem key={id}>
                     <div># {id+1}</div>
-                    <a Darkmode={Darkmode} href ={`/account/${item.launcherId}`} className="launcher_id">{item.launcherId}</a>
+                    <a Darkmode={Darkmode} href ={`/account/${item.launcherId}`} className="launcher_id">{item.name ? item.name: item.launcherId}</a>
                     {/* <div>{getPlotSize(item.estimatedPlotSizeTiB*1000)}</div> */}
                     <div className='leaderboard_hidden'>{item.difficulty}</div>
                     <div>{numberWithCommas(item.points)}</div>

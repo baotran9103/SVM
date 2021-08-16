@@ -9,10 +9,11 @@ import Partials from './Partials'
 import Payout from './Payout'
 import Tabs from './Tabs'
 import AccountChart from './AccountChart'
+import {useSelector} from 'react-redux'
 function AccountPage() {
     const [currentCard, setcurrentCard] = useState(-1)
     const [currentIndex, setcurrentIndex] = useState(0)
-
+  const price = useSelector(state => state.Utils.chiaPrice)
   let { launcherid } = useParams();
   const info = useQueries([
     {
@@ -29,11 +30,7 @@ function AccountPage() {
           (res) => res.json()
         ),
     },
-    {
-      queryKey: "chiaPrice",
-      queryFn: () =>
-        fetch(`https://xchscan.com/api/chia-price`).then((res) => res.json()),
-    },
+  
     {
         queryKey: "farmerPartials",
         queryFn: () =>
@@ -50,12 +47,16 @@ function AccountPage() {
       },
   ]);
 
-  console.log(launcherid);
+
   if (info[0].isLoading || info[1].isLoading   ||  info[2].isLoading  ||  info[3].isLoading) {
     return <LoadingPage />;
   } else if (info[0].isError || info[1].isError  || info[2].isError ||  info[3].isError) {
     return <ErrorPage />;
   }
+  var farmer_info = info[0].data;
+  var payoutHistory = info[1].data
+  var farmerPartials = info[2].data
+  var farmerStats = info[3].data
   function getAmount(amount){
     var res = 0;
     console.log(amount)
@@ -69,7 +70,7 @@ function numberWithCommas(x) {
   return (
     <div>
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>
-        <h3 style={{textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>{`${launcherid}`}</h3>
+        <h3 style={{textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>{`${farmer_info.name ?farmer_info.name:launcherid}`}</h3>
 
         </div>
       
@@ -78,7 +79,7 @@ function numberWithCommas(x) {
         index = {0}
         currentCard={currentCard}
         setcurrentCard={setcurrentCard}
-          value={info[0].data.points}
+          value={farmer_info.points}
           label={"Farmer Points"}
           sublabel={""}
           tooltipTitle="Farmer Points"
@@ -89,7 +90,7 @@ function numberWithCommas(x) {
 
         currentCard={currentCard}
         setcurrentCard={setcurrentCard}
-          value={numberWithCommas(info[4].data.plots)}
+          value={numberWithCommas(info[3].data.plots)}
           label={"Plot size"}
           sublabel={""}
           tooltipTitle="Estimated Plot Size"
@@ -100,7 +101,7 @@ function numberWithCommas(x) {
 
         currentCard={currentCard}
         setcurrentCard={setcurrentCard}
-          value={info[0].data.difficulty}
+          value={farmer_info.difficulty}
           label={"Difficulty"}
           sublabel={""}
           tooltipTitle="Farmer Difficulty"
@@ -111,21 +112,21 @@ function numberWithCommas(x) {
 
         currentCard={currentCard}
         setcurrentCard={setcurrentCard}
-          value={getAmount(info[1].data)}
+          value={getAmount(payoutHistory)}
           label={"Total Paid XCH"}
-          sublabel={`$${(getAmount(info[1].data)*info[2].data.usd).toFixed(2)} `}
+          sublabel={`$${(getAmount(payoutHistory)*price.usd).toFixed(2)} `}
           tooltipTitle="Total Paid XCH"
           tooltipDescription="The total amount of XCH you have been paid out. See the Payout tab for details."
         />
       </CardsRow>
-      <AccountChart data = {info[4].data.estimates}/>
+      <AccountChart data = {info[3].data.estimates}/>
       
       <Tabs currentIndex={currentIndex} setcurrentIndex={setcurrentIndex}/>
       {
-          currentIndex === 1 ?  <Partials data = {info[3].data}/> : null
+          currentIndex === 1 ?  <Partials data = {farmerPartials}/> : null
       }
       {
-          currentIndex === 0 ?  <Payout data = {info[1].data}/> : null
+          currentIndex === 0 ?  <Payout price ={price.usd} data = {payoutHistory}/> : null
       }
       
      

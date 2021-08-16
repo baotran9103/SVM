@@ -1,9 +1,9 @@
 import React from 'react'
-import styled from 'styled-components'
 import {Sectionheader,Table,TableColumn,ColumnHeader,ColumnValue} from './StyledComponents'
-
+import  {useSelector} from 'react-redux'
 function Payout(props) {
     const data = props.data.slice(0,50)
+    const DarkMode = useSelector(state => state.Utils.Darkmode)
     return (
         <div style={{padding:'0 1rem'}}>
             <Sectionheader> Payout History</Sectionheader>
@@ -40,7 +40,15 @@ function Payout(props) {
                     <ColumnHeader>Amount</ColumnHeader>
                     {
                         data.map((item,id)=>(
-                            <ColumnValue key={id}> {`${(item.amount/(10**12)).toFixed(2)} XCH`} </ColumnValue>
+                            <ColumnValue DarkMode={DarkMode} key={id} > 
+                            <div className="Coint_amount">
+                            <div>
+                            {`${(item.amount/(10**12)).toFixed(2)} XCH`}
+                            </div>
+                            <div className='USD_ammount'>{`$${(item.amount/(10**12)*props.price).toFixed(2)}`}</div>
+                            </div>
+                           
+                             </ColumnValue>
                         ))
                     }
                    

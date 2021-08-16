@@ -23,7 +23,7 @@ function RecentlyFarm(props) {
         </ChartItem>
         {state.map((item, id) => (
           <ChartItem key={id}>
-            <Chartitemvisible islong={true}>
+            <Chartitemvisible Darkmode={props.Darkmode} href={`https://xchscan.com/blocks/${item.confirmedAtHeight}`}  target="_blank" islong={true}>
               {item.confirmedAtHeight}
             </Chartitemvisible>
 
@@ -36,11 +36,11 @@ function RecentlyFarm(props) {
 
             {/* <Chartitemvisible><a href={`/account/${item.winnerLauncherId}`}>{item.winnerLauncherId}</a></Chartitemvisible> */}
             {/* <Chartitemvisible>{item.luck}</Chartitemvisible> */}
-            <Chartitemvisible>
+            <Chartitemvisible Darkmode={props.Darkmode}>
               {new Date(item.createdAt).toLocaleDateString()}
             </Chartitemvisible>
 
-            <Chartitemvisible>1.75 XCH</Chartitemvisible>
+            <Chartitemvisible Darkmode={props.Darkmode}>1.75 XCH</Chartitemvisible>
           </ChartItem>
         ))}
       </ChartTable>
@@ -68,7 +68,7 @@ const ChartItem = styled.div`
   }
 `;
 
-const Chartitemvisible = styled.div`
+const Chartitemvisible = styled.a`
   display: flex;
   justify-content: flex-start;
   justify-content: flex-start;
@@ -76,6 +76,9 @@ const Chartitemvisible = styled.div`
   text-overflow: hidden;
   overflow: hidden;
   width: 100%;
+  text-decoration:none;
+  color:${({ Darkmode }) => (Darkmode ? theme.colors.white : theme.colors.black)};
+
   a {
     text-decoration: none;
     color: ${theme.colors.primary};
@@ -97,7 +100,7 @@ const ChartitemHidden = styled.a`
   justify-content: flex-start;
   padding: 0.75rem 0;
   width: 100%;
-  color:${({ Darkmode }) => (Darkmode ? theme.colors.primary : theme.colors.black)};
+  color:${({ Darkmode }) => (Darkmode ? theme.colors.primary : theme.colors.primary)};
   text-decoration: none;
   text-overflow: hidden;
   overflow: hidden;

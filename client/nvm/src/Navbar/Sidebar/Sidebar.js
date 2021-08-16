@@ -5,14 +5,22 @@ import styled from 'styled-components'
 import {StickerInfo,StickerInfoData,StickerPercent,LauncherinputContainer,LauncherInput,SearchButton} from '../NavbarRight/StyledComponents'
 import Toggle from '../NavbarRight/Toggle'
 import {useSelector} from 'react-redux'
+import { useQuery } from "react-query";
+
+import LoadingPage from '../../utils/LoadingPage'
+import ErrorPage from '../../utils/ErrorPage'
 function Sidebar(props) {
     const [launcherid, setlauncherid] = React.useState("")
     const [showchart, setshowchart] = React.useState(false)
     const Darkmode = useSelector(state => state.Utils.Darkmode)
+   
+
     function InputChangeHandler(e){
         e.preventDefault();
         setlauncherid(e.target.value)
     }
+    const apikey = "4896458c-8163-4bc0-8807-b6be27c405ce";
+  
     return (
         <SidebarContainer  sidebar={props.sidebar}>
             <LinksContainer Darkmode={Darkmode}>
@@ -24,8 +32,8 @@ function Sidebar(props) {
             <div style={{display:'flex'}}>
             <Toggle />
             <StickerInfo href='https://coinmarketcap.com/currencies/chia-network/' >
-                <StickerInfoData Darkmode={Darkmode}> XCH $231.79</StickerInfoData>
-                <StickerPercent ispositive={1.16>0}>1.16%</StickerPercent>
+                <StickerInfoData Darkmode={Darkmode}> ${props.data.usd}</StickerInfoData>
+                <StickerPercent ispositive={1.16>0}>USD/XCH</StickerPercent>
                 
                 
             </StickerInfo>
