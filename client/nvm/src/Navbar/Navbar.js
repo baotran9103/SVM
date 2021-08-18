@@ -11,13 +11,16 @@ function Navbar(props) {
  
     return (
         <NavBarContainer Darkmode={Darkmode}>
-            <Navbar_logo>Vast Pool</Navbar_logo>
-            <NavbarLeft />
-            <div style={{marginRight:'auto'}}></div>
-            <NavbarRight data={props.data} Darkmode={Darkmode} />
+            <Navbar_logo Darkmode={Darkmode}>VastPool</Navbar_logo>
+            <NavbarLeft Darkmode={Darkmode} />
+            {/* <div style={{marginRight:'auto'}}></div> */}
+            <NavbarRight  data={props.data} Darkmode={Darkmode} />
+            <div style={{display:'flex',justifyContent:'flex-end'}}>
             <MenuContainer onClick={()=> props.setsidebar(!props.sidebar)} >
                 <Menu />
             </MenuContainer>
+            </div>
+         
             
         </NavBarContainer>
     )

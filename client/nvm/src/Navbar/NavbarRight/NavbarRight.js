@@ -7,7 +7,7 @@ import {
   StickerPercent,
   LauncherinputContainer,
   LauncherInput,
-  SearchButton,
+  SearchButton,NavButton,
 } from "./StyledComponents";
 import ChartPopUp from "./ChartPopUp";
 
@@ -44,9 +44,11 @@ function NavbarRight({Darkmode,data}) {
       >
         <StickerInfoData Darkmode={Darkmode}> ${data.usd}</StickerInfoData>
         <StickerPercent ispositive={1.16 > 0}>USD/XCH</StickerPercent>
-        <ChartPopUp showchart={showchart} />
+        {/* <ChartPopUp showchart={showchart} /> */}
       </StickerInfo>
-      <LauncherinputContainer>
+      <NavButton id = {1}>Join Now</NavButton>
+      <NavButton id = {2}>Contact Us</NavButton>
+      {/* <LauncherinputContainer>
         <LauncherInput
           value={launcherid}
           onChange={InputChangeHandler}
@@ -54,7 +56,7 @@ function NavbarRight({Darkmode,data}) {
           placeholder="Launcher Id or alias"
         />
       </LauncherinputContainer>
-      <SearchButton to={`/account/${launcherid}`}> Search</SearchButton>
+      <SearchButton to={`/account/${launcherid}`}> Search</SearchButton> */}
     </NavContainer>
   );
 }
