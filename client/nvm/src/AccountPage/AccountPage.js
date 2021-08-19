@@ -8,6 +8,7 @@ import { CardsRow } from "./StyledComponents";
 import Partials from './Partials'
 import Payout from './Payout'
 import Tabs from './Tabs'
+import Rewards from './Rewards'
 import AccountChart from './AccountChart'
 import {useSelector} from 'react-redux'
 function AccountPage() {
@@ -45,21 +46,51 @@ function AccountPage() {
             res.json()
           ),
       },
+      {queryKey:'FarmerWining',queryFn:
+    () =>
+    fetch(
+      `https://api.vastpool.net/farmer/earning/${launcherid}`
+    ).then((res) => res.json())
+  },
   ]);
 
 
-  if (info[0].isLoading || info[1].isLoading   ||  info[2].isLoading  ||  info[3].isLoading) {
+  if (info[0].isLoading || info[1].isLoading   ||  info[2].isLoading  ||  info[3].isLoading || info[4].isLoading) {
     return <LoadingPage />;
-  } else if (info[0].isError || info[1].isError  || info[2].isError ||  info[3].isError) {
+  } else if (info[0].isError || info[1].isError  || info[2].isError ||  info[3].isError || info[4].isError) {
     return <ErrorPage />;
   }
   var farmer_info = info[0].data;
   var payoutHistory = info[1].data
   var farmerPartials = info[2].data
   var farmerStats = info[3].data
+  var farmerRewards = info[4].data
+  
+
+  const groups = payoutHistory.reduce((groups, item) => {
+    const date = item.payDate.split('T')[0];
+    if (!groups[date]) {
+      groups[date] = [];
+    }
+    groups[date].push(item);
+    return groups;
+  }, {});
+  
+
+  const groupArrays = Object.keys(groups).map((date) => {
+    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+    return {
+      date,
+      amount: groups[date].reduce((accumulator, currentValue) => accumulator + currentValue.amount,0)/(10**12)
+    };
+  });
+  
+ 
+
+
   function getAmount(amount){
     var res = 0;
-    console.log(amount)
+ 
     // amount.forEach()
     amount.forEach(item=> res = res+ item.amount)
     return (res/(10**12)).toFixed(2)
@@ -123,10 +154,13 @@ function numberWithCommas(x) {
       
       <Tabs currentIndex={currentIndex} setcurrentIndex={setcurrentIndex}/>
       {
-          currentIndex === 1 ?  <Partials data = {farmerPartials}/> : null
+          currentIndex === 2 ?  <Partials data = {farmerPartials}/> : null
       }
       {
-          currentIndex === 0 ?  <Payout price ={price.usd} data = {payoutHistory}/> : null
+          currentIndex === 1 ?  <Payout price ={price.usd} data = {payoutHistory}/> : null
+      }
+      {
+          currentIndex === 0 ?  <Rewards chartData={groupArrays} conversion={price.usd}  data = {farmerRewards}/> : null
       }
       
      

@@ -26,6 +26,7 @@ function LeaderBoard() {
     ).then((res) => res.json())
   },
     
+    
   ])
 
  
@@ -98,7 +99,7 @@ function LeaderBoard() {
         <TableHeader Darkmode={Darkmode}>
           <div>Rank</div>
           <div>Farmer</div>
-          {/* <div>Plot Size</div> */}
+          <div>Plot Size</div>
           <div className="leaderboard_hidden">Difficulty</div>
           <div>Points</div>
           {/* <div className="leaderboard_hidden">Joined</div> */}
@@ -109,6 +110,7 @@ function LeaderBoard() {
                     <div># {id+1}</div>
                     <a Darkmode={Darkmode} href ={`/account/${item.launcherId}`} className="launcher_id">{item.name ? item.name: item.launcherId}</a>
                     {/* <div>{getPlotSize(item.estimatedPlotSizeTiB*1000)}</div> */}
+                    <div >{item.plots}</div>
                     <div className='leaderboard_hidden'>{item.difficulty}</div>
                     <div>{numberWithCommas(item.points)}</div>
                     {/* <div className='leaderboard_hidden'>{(

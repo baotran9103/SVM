@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { theme } from "../utils/Theme";
 
 function Tabs(props) {
-    const Tabs = ["Payouts","Partials"]
+    const Tabs = ["Rewards","Payouts","Partials"]
     return (
         <TabsContainer>
             {

@@ -9,7 +9,7 @@ export const NavBarContainer = styled.div`
     z-index:1000;
     padding:1rem;
     background:${({Darkmode}) => Darkmode? 'transparent':   theme.colors.black};
-    color:white;
+    /* color:${({Darkmode}) => Darkmode? theme.colors.white:   theme.colors.black}; */
     @media screen and (max-width:768px){
     grid-template-columns:1fr 2fr ;
 
@@ -37,8 +37,9 @@ export const MenuContainer = styled.div`
     width: 2rem;
     height: 2rem;
     cursor: pointer;
-    justify-content:flex-end;
-    display:flex;
+    /* justify-content:flex-end; */
+    
+ color: white;
     @media screen and (min-width:768px){
         display: none;
     }
