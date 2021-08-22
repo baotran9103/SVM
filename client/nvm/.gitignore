@@ -43,3 +43,5 @@ amplifytools.xcconfig
 .secret-*
 #amplify-do-not-edit-end
 amplify/
+.vscode
+.firebase
