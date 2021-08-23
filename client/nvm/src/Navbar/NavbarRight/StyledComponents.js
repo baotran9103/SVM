@@ -10,7 +10,21 @@ export const NavContainer = styled.div`
         display: none;
     }
 `
+export const NavButton = styled.div`
+    display:flex;
+    background:${({id})=> id===1 ? 'transparent':theme.colors.primary};
+    border:0.5px solid ${({id})=> id===1 ?theme.colors.primary :'transparent'};
+    color:${({id})=> id===1 ?theme.colors.white :theme.colors.black };
+    font-weight:600;
+    border-radius:5px;
+    justify-content:center;
+    align-items:center;
+    padding:0.5rem 2rem;
+    cursor: pointer;
+    margin-left:1rem;
 
+
+`
 export const StickerInfo =styled.a`
 position:relative;
     display: flex;
@@ -24,6 +38,7 @@ position:relative;
     `
 export const StickerInfoData = styled.div`
     color: ${({Darkmode})=> Darkmode ? theme.colors.white:theme.colors.black};
+    /* color:${theme.colors.white} */
 `
 
 export const StickerPercent = styled.div`
@@ -38,7 +53,11 @@ export const LauncherInput = styled.input`
     display: flex;
     padding:0.25rem 0.5rem;
     border-radius:5px;
-    width:220px;
+    width:120px;
+    transition:0.4s all ease-in-out;
+    :focus{
+        width:220px;
+    }
     border:0.5px solid gray;
     :focus{
         color: ${theme.colors.blue};

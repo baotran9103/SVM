@@ -18,7 +18,7 @@ function Footer() {
             <FooterLinks>
                 {
                     Links.map((link,id)=> (
-                        <FooterLink to={link.Link}>{link.title}</FooterLink>
+                        <FooterLink key={id} to={link.Link}>{link.title}</FooterLink>
 
                     ))
                 }

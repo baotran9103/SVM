@@ -6,7 +6,7 @@ export const FooterContainer = styled.div`
     justify-content: center;
     flex-direction:column;
     padding:2rem;
-    background:${({Darkmode}) => Darkmode? 'transparent':   theme.colors.secondary};
+    background:${({Darkmode}) => Darkmode? 'transparent':   theme.colors.lightsecondary};
     
     
 `

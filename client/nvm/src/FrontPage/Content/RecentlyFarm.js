@@ -13,16 +13,16 @@ function RecentlyFarm(props) {
     <div style={{ margin: "0 1rem " }}>
       <Chartheader> Recently Farmed Chia</Chartheader>
       <ChartTable>
-        <ChartItem>
-          <Chartitemvisible>Block #</Chartitemvisible>
-          <ChartitemHidden >Coin Hash</ChartitemHidden>
+        <ChartItem Darkmode={props.Darkmode}>
+          <Chartitemvisible className='ChartHeader'>Block #</Chartitemvisible>
+          <ChartitemHidden className='ChartHeader'>Coin Hash</ChartitemHidden>
           {/* <Chartitemvisible>Farmer</Chartitemvisible> */}
           {/* <Chartitemvisible>Pool Luck</Chartitemvisible> */}
-          <Chartitemvisible>Date</Chartitemvisible>
-          <Chartitemvisible>Reward</Chartitemvisible>
+          <Chartitemvisible className='ChartHeader'>Date</Chartitemvisible>
+          <Chartitemvisible className='ChartHeader'>Reward</Chartitemvisible>
         </ChartItem>
         {state.map((item, id) => (
-          <ChartItem key={id}>
+          <ChartItem key={id} Darkmode={props.Darkmode}>
             <Chartitemvisible Darkmode={props.Darkmode} href={`https://xchscan.com/blocks/${item.confirmedAtHeight}`}  target="_blank" islong={true}>
               {item.confirmedAtHeight}
             </Chartitemvisible>
@@ -37,7 +37,7 @@ function RecentlyFarm(props) {
             {/* <Chartitemvisible><a href={`/account/${item.winnerLauncherId}`}>{item.winnerLauncherId}</a></Chartitemvisible> */}
             {/* <Chartitemvisible>{item.luck}</Chartitemvisible> */}
             <Chartitemvisible Darkmode={props.Darkmode}>
-              {new Date(item.createdAt).toLocaleDateString()}
+              {new Date(item.createdAt).toLocaleString()}
             </Chartitemvisible>
 
             <Chartitemvisible Darkmode={props.Darkmode}>1.75 XCH</Chartitemvisible>
@@ -50,6 +50,8 @@ function RecentlyFarm(props) {
 
 export default RecentlyFarm;
 
+
+
 const Chartheader = styled.h3``;
 
 const ChartTable = styled.div`
@@ -60,9 +62,21 @@ const ChartTable = styled.div`
 
 const ChartItem = styled.div`
   display: grid;
-  grid-template-columns: 1fr 3fr 3fr 1fr 1fr 1fr;
+   /* grid-template-columns: 1fr 3fr 3fr 1fr 1fr 1fr; */
+  grid-template-columns: 1fr 3fr 3fr 1fr ;
   column-gap: 0.5rem;
   width: 100%;
+  border-bottom:1px solid ${({ Darkmode }) => (Darkmode ? theme.colors.white : theme.colors.black)};;
+ 
+  .ChartHeader{
+    font-size:1.15rem;
+    font-weight:bold;
+    color:${({ Darkmode }) => (Darkmode ? theme.colors.white : theme.colors.black)};
+    @media screen and (max-width: 768px) {
+      font-size:1rem;
+
+  }
+  }
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
   }

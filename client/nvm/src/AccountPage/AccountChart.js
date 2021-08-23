@@ -27,7 +27,6 @@ import { theme } from "../utils/Theme";
 	return null;
 };
 function AccountChart(props) {
-    console.log(props.data)
    
     return (
         <div>

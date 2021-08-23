@@ -37,15 +37,15 @@ function Payout(props) {
                    
                     </TableColumn>
                     <TableColumn>
-                    <ColumnHeader>Amount</ColumnHeader>
+                    <ColumnHeader>Amount (XCH)</ColumnHeader>
                     {
                         data.map((item,id)=>(
                             <ColumnValue DarkMode={DarkMode} key={id} > 
                             <div className="Coint_amount">
                             <div>
-                            {`${(item.amount/(10**12)).toFixed(2)} XCH`}
+                            {`${(item.amount/(10**12))} `}
                             </div>
-                            <div className='USD_ammount'>{`$${(item.amount/(10**12)*props.price).toFixed(2)}`}</div>
+                            
                             </div>
                            
                              </ColumnValue>
