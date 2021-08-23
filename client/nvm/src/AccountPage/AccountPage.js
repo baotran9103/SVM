@@ -45,6 +45,13 @@ function AccountPage() {
             res.json()
           ),
       },
+      {
+        queryKey: "farmerBlockfound",
+        queryFn: () =>
+          fetch(`https://abc.chiaexplorer.com/farmerRank/${launcherid}`).then((res) =>
+            res.json()
+          ),
+      },
   ]);
 
 
@@ -109,6 +116,17 @@ function numberWithCommas(x) {
         />
         <Card
         index = {3}
+
+        currentCard={currentCard}
+        setcurrentCard={setcurrentCard}
+          value={farmer_info.difficulty}
+          label={"Difficulty"}
+          sublabel={""}
+          tooltipTitle="Farmer Difficulty"
+          tooltipDescription="Farmer Difficulty in Vast Pool"
+        />
+        <Card
+        index = {4}
 
         currentCard={currentCard}
         setcurrentCard={setcurrentCard}
