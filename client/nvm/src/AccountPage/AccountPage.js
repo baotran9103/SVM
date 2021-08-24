@@ -106,7 +106,7 @@ function numberWithCommas(x) {
 }
   return (
     <div>
-      <PopUp farmer_info={farmer_info.name} authentication_token={query.get('authentication_token')} launcherid={launcherid}/>
+      <PopUp farmer_info={farmer_info.name} token={query.get('token')} launcherid={launcherid}/>
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>
         <h3 style={{textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>{`${farmer_info.name ?farmer_info.name:launcherid}`}</h3>
 

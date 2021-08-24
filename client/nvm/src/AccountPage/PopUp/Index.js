@@ -4,10 +4,10 @@ import { theme } from "../../utils/Theme";
 import {useHistory} from 'react-router-dom'
 function Index(props) {
     let history = useHistory();
-    console.log(props.authentication_token)
+    console.log(props.token)
     const [alias, setalias] = React.useState(props.farmer_info)
     async function postData( data = {}) {
-        var url =  `https://api.vastpool.net/farmer/${props.launcherid}/${props.authentication_token}`
+        var url =  `https://api.vastpool.net/farmer/${props.launcherid}/${props.token}`
         const response = await fetch(url, {
           method: 'POST', 
         //   mode: 'cors', 
@@ -27,7 +27,7 @@ function Index(props) {
         postData({ "name" : alias}).then(res=> res.ok ? history.push(`/account/${props.launcherid}`):alert("Could not save alias to this launcher id !")).catch(err=> alert("Could not save alias to this launcher id !"))
     }
   return (
-    <Container authentication_token = {props.authentication_token}>
+    <Container token = {props.token}>
       <Card>
         <CardHeader> Account Settings</CardHeader>
         <CardBody>
@@ -55,7 +55,7 @@ export default Index;
 
 const Container = styled.div`
 
-  display: ${({authentication_token})=> authentication_token? 'flex':'none'} ;
+  display: ${({token})=> token? 'flex':'none'} ;
   position: fixed;
   top: 0;
   left: 0;
