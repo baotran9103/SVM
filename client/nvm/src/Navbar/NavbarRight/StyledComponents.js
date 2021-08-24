@@ -39,6 +39,10 @@ position:relative;
 export const StickerInfoData = styled.div`
     color: ${({Darkmode})=> Darkmode ? theme.colors.white:theme.colors.black};
     /* color:${theme.colors.white} */
+    .NavPrice{
+          color:${theme.colors.white}
+
+    }
 `
 
 export const StickerPercent = styled.div`

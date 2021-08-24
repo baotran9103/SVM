@@ -42,7 +42,7 @@ function NavbarRight({Darkmode,data}) {
         onMouseEnter={() => setshowchart(true)}
         onMouseLeave={() => setshowchart(false)}
       >
-        <StickerInfoData Darkmode={Darkmode}> ${data.usd}</StickerInfoData>
+        <StickerInfoData  Darkmode={Darkmode}> <div className='NavPrice'>${data.usd}</div> </StickerInfoData>
         <StickerPercent ispositive={1.16 > 0}>USD/XCH</StickerPercent>
         {/* <ChartPopUp showchart={showchart} /> */}
       </StickerInfo>

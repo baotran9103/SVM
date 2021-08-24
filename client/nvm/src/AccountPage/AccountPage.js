@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { useParams } from "react-router-dom";
+import { useParams ,useLocation} from "react-router-dom";
 import LoadingPage from "../utils/LoadingPage";
 import ErrorPage from "../utils/ErrorPage";
 import { useQueries } from "react-query";
@@ -11,11 +11,17 @@ import Tabs from './Tabs'
 import Rewards from './Rewards'
 import AccountChart from './AccountChart'
 import {useSelector} from 'react-redux'
+import PopUp from './PopUp/Index'
 function AccountPage() {
     const [currentCard, setcurrentCard] = useState(-1)
     const [currentIndex, setcurrentIndex] = useState(0)
   const price = useSelector(state => state.Utils.chiaPrice)
   let { launcherid } = useParams();
+  function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  }
+  let query = useQuery();
+  
   const info = useQueries([
     {
       queryKey: "farmerInfo",
@@ -100,6 +106,7 @@ function numberWithCommas(x) {
 }
   return (
     <div>
+      <PopUp farmer_info={farmer_info.name} authentication_token={query.get('authentication_token')} launcherid={launcherid}/>
         <div style={{display:'flex',justifyContent:'center',alignItems:'center',textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>
         <h3 style={{textOverflow:'ellipsis', whiteSpace: 'nowrap',overflow:'hidden'}}>{`${farmer_info.name ?farmer_info.name:launcherid}`}</h3>
 
@@ -138,7 +145,7 @@ function numberWithCommas(x) {
           tooltipTitle="Farmer Difficulty"
           tooltipDescription="Farmer Difficulty in Vast Pool"
         />
-        <Card
+        {/* <Card
         index = {3}
 
         currentCard={currentCard}
@@ -148,7 +155,7 @@ function numberWithCommas(x) {
           sublabel={""}
           tooltipTitle="Farmer Difficulty"
           tooltipDescription="Farmer Difficulty in Vast Pool"
-        />
+        /> */}
         <Card
         index = {4}
 

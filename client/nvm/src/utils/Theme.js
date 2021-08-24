@@ -4,6 +4,7 @@ export const theme = {
     secondary:'#e1d8d8',
     lightsecondary:'#fcfeff',
     lightPrimary:'#ff9f4e',
+    cardHeader:'#F47B7B',
     goodColor:'#2d7533',
     badColor:'#ff5858',
     blue: "#007bff",
