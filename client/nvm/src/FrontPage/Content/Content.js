@@ -94,10 +94,11 @@ function Content() {
           <ContentImage src="/etherminegraphic.jpeg" alt="" />
         </ContentContainer>
 
-        <SearchFrom onSubmit={SubmitEvent}>
+        <SearchFrom Darkmode={Darkmode} onSubmit={SubmitEvent}>
           <div style={{ width: "1.5rem", height: "1.5rem" }}>
             <SearchIcon />
           </div>
+          <div style={{ display:'flex',jusifyContent:'space-between',width:'100%'}}>
           <LauncherinputContainer>
             <LauncherInput
               value={launcherid}
@@ -107,17 +108,19 @@ function Content() {
             />
           </LauncherinputContainer>
           <SearchButton to={`/account/${launcherid}`}> Search</SearchButton>
+          </div>
+          
         </SearchFrom>
       </div>
       <Cards>
         <Card
-          title="Pool Net Space"
+          title="Net Space"
           value={`${data[0].data ? data[0].data.netspace : 0} ${
             data[0].data ? data[0].data.netspaceUnit : ""
           }`}
         />
         <Card
-          title="Farmer Online"
+          title="Farmers"
           value={`${data[0].data ? data[0].data.farmerOnline : 0}`}
         />
         <Card

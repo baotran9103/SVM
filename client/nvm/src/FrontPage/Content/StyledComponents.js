@@ -75,13 +75,16 @@ export const ButtonBound = styled.div`
   cursor: pointer;
   color: #fff;
   /* background: ${theme.colors.brightgreen}; */
+  /* box-shadow: 1px 1px 10px hsla(240,60%,86%,1); */
   background: #e37016;
   /* background: linear-gradient(#fea777,#e37016); */
-  border-radius: 5px;
-  /* :hover{
+  border-radius: 20px;
+  :hover{
         background:#fff;
         color: ${theme.colors.primary};
-    } */
+  box-shadow: 1px 1px 10px hsla(240,60%,86%,1);
+
+    }
 `;
 
 export const ImageButton = styled.image`
@@ -129,6 +132,10 @@ export const ChartContainer = styled.div`
 export const LauncherinputContainer = styled.div`
   display: flex;
   margin: 0 0.5rem;
+  width: 100%;
+  @media screen and (max-width: 320px){
+    margin: 0 0.2rem;
+  }
 `;
 export const LauncherInput = styled.input`
   display: flex;
@@ -147,8 +154,8 @@ export const LauncherInput = styled.input`
 
   height: 45px;
   border: none;
-  width: 400px;
-  max-width: 30vw;
+  width: 100%;
+  /* max-width: 30vw; */
   font-size: 16px;
   outline: none;
 `;
@@ -157,8 +164,14 @@ export const SearchButton = styled(LinkR)`
   background: transparent;
   text-decoration: none;
   /* color: ${theme.colors.primary}; */
-  background: ${theme.colors.primary};
-  color: #fff;
+  background: ${theme.colors.white};
+  color: black;
+  box-shadow: 1px 1px 5px hsla(240,60%,86%,1);
+  /* background: ${theme.colors.white};
+  color: ${theme.colors.black};
+  box-shadow: 4px 4px 5px hsla(240,8%,20%,1),
+  inset 4px 4px 5px hsla(240, 8%, 20%, 1)
+  ;  */
 
   cursor: pointer;
   align-items: center;
@@ -167,36 +180,68 @@ export const SearchButton = styled(LinkR)`
   border: 1px solid transparent;
 
   transition: all 0.3s ease;
-  margin-left: 0.5rem;
+  /* margin-left: 2rem; */
+  margin:0.25rem 0 ;
+  margin-right: 0.5rem;
   width: 100px;
-  padding: 0.5rem;
+  padding: 0.25rem 2rem;
   :hover {
-    color: black;
-    background: white;
+    color: white;
+    background: ${theme.colors.primary};
   }
   @media screen and (max-width: 768px) {
-    width: 70px;
+    width: 50px;
+  padding: 0.5rem 1rem;
+
+  margin-left: 1rem;
+  margin-right: 0;
+
+  }
+  @media screen and (min-width:375px){
+  margin-left: 2rem;
+
+
   }
 `;
 export const SearchFrom = styled.form`
-  display: flex;
-  margin: 2rem auto;
-
-  width: 575px;
+  display: grid;
+  margin: 2rem 1rem;
+   grid-template-columns:1fr 20fr;
+  /* width: 575px; */
   border-radius: 30px;
-  max-width: 80vw;
+  /* max-width: 80vw; */
   padding: 0.5rem 1rem;
   /* background:${theme.colors.lightPrimary}; */
-  border: 1px solid ${theme.colors.lightPrimary};
+  border: 0.5px solid ${theme.colors.gray};
+  background:white;
+   /* box-shadow: 4px 4px 4px hsla(255, 8%, 12%, 1), 
+              -4px -4px 4px hsla(255, 8%, 20%, 1), 
+              inset -4px -4px 4px hsla(255, 8%, 20%, 1), 
+              inset 4px 4px 4px hsla(255, 8%, 12%, 1); */
+            ;
+   box-shadow: ${({Darkmode})=>Darkmode?`-4px -4px 5px black, 4px 4px 8px hsla(240, 8%, 12%, 1), 
+              inset 4px 4px 8px gray, 
+              inset -4px -4px 8px gray
+            ;`: `-6px -6px 8px white, 6px 6px 8px hsla(240, 30%, 86%, 1), 
+              inset 6px 6px 8px hsla(240, 30%, 86%, 1), 
+              inset -6px -6px 8px white
+            ;`} ;
+            
+            color:black;
   align-items: center;
+  @media screen and (min-width:1080px){
+    max-width: 50vw;
+    /* align-self: center; */
+    margin:auto;
+  }
   /* justify-content:flex-start; */
 
   /* justify-content:space-evenly; */
   :hover {
-    box-shadow: 1px 1px 5px #dcdcdc;
+    /* box-shadow: 1px 1px 5px #dcdcdc; */
   }
   :focus-within {
-    box-shadow: 1px 1px 5px #dcdcdc;
+    /* box-shadow: 1px 1px 5px #dcdcdc; */
     outline: none;
     @media screen and (max-width: 768px) {
       padding: 0.5rem;
@@ -217,6 +262,7 @@ export const CardContainer = styled.div`
     rgba(225, 225, 225, 0.24),
     rgba(255, 207, 159, 0.7)
   );
+  width: 120px;
   box-shadow: 1px 1px 5px rgba(255, 207, 159, 0.5);
   color: ${theme.colors.primary};
   padding: 1rem 2rem;

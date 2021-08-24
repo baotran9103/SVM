@@ -25,8 +25,15 @@ export const Navbar_logo = styled.div`
     /* color:${({Darkmode}) => Darkmode?theme.colors.primary:   theme.colors.white}; */
     /* background:${theme.colors.primary}; */
     color:${theme.colors.primary};
-
-    border-radius:10px;
+    /* text-shadow: -6px -6px 16px red, 
+              6px 6px 16px hsla(240, 30%, 86%, 1), 
+              inset 6px 6px 16px hsla(240, 30%, 86%, 1), 
+              inset -6px -6px 16px white;
+            
+            
+            ; */
+           
+    border-radius:50%;
     padding:.5rem 2rem;
     margin-right: 1rem;
     line-height: inherit;
