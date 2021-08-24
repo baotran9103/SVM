@@ -216,7 +216,7 @@ function AccountPage() {
       {currentIndex === 1 ? (
         <Payout price={price.usd} data={payoutHistory ? payoutHistory : []} />
       ) : null}
-      {(currentIndex === 0) & groupArrays ? (
+      {(currentIndex === 0) && farmerRewards ? (
         <Rewards
           chartData={groupArrays}
           conversion={price.usd}
