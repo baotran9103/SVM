@@ -4,7 +4,7 @@ import {theme} from '../utils/Theme'
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 function RewardChart({data}) {
-    console.log(data)
+    
     return (
         <div style={{width: '100%',height: '100%'}}>
         <ResponsiveContainer width="100%" height={400}>

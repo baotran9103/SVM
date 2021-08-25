@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation,useHistory } from "react-router-dom";
 import LoadingPage from "../utils/LoadingPage";
 import ErrorPage from "../utils/ErrorPage";
 import { useQueries } from "react-query";
@@ -17,6 +17,11 @@ function AccountPage() {
   const [currentIndex, setcurrentIndex] = useState(0);
   const price = useSelector((state) => state.Utils.chiaPrice);
   let { launcherid } = useParams();
+  const history = useHistory();
+  var token = (history.location.search)
+  token= token? token.replace('?token=',''):null
+  console.log(token)
+  console.log(history)
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -123,7 +128,7 @@ function AccountPage() {
     <div>
       
       <PopUp
-        farmer_info={farmer_info ? farmer_info.name : launcherid} token={query.get('token')}
+        farmer_info={farmer_info ? farmer_info.name : launcherid} token={token}
         authentication_token={query.get("authentication_token")}
         launcherid={launcherid}
       />
@@ -143,11 +148,11 @@ function AccountPage() {
             whiteSpace: "nowrap",
             overflow: "hidden",
           }}
-        >{`${
-          farmer_info
-            ? farmer_info.name
-            : `Cannot find information for ${launcherid}`
-        }`}</h3>
+        >{
+          farmer_info? farmer_info.name===''? launcherid: farmer_info.name: `Cannot find information for ${launcherid}`
+          }
+          
+          </h3>
       </div>
 
       <CardsRow>

@@ -1,11 +1,19 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import styled from "styled-components";
 import { theme } from "../../utils/Theme";
 import {useHistory} from 'react-router-dom'
 function Index(props) {
     let history = useHistory();
-    console.log(props.token)
-    const [alias, setalias] = React.useState(props.farmer_info)
+    // console.log(props.token)
+    console.log(props.farmer_info)
+    const [alias, setalias] = useState("")
+   
+    
+  
+    useEffect(() => {
+      setalias(props.farmer_info)
+    }, [props.farmer_info])
+    console.log(alias)
     async function postData( data = {}) {
         var url =  `https://api.vastpool.net/farmer/${props.launcherid}/${props.token}`
         const response = await fetch(url, {
@@ -24,8 +32,9 @@ function Index(props) {
         return response.json(); // parses JSON response into native JavaScript objects
       }
     const SaveEvent = ()  => {
-        postData({ "name" : alias}).then(res=> res.ok ? history.push(`/account/${props.launcherid}`):alert("Could not save alias to this launcher id !")).catch(err=> alert("Could not save alias to this launcher id !"))
+        postData({ "name" : alias}).then(res=> {console.log(res);res.name=== alias? history.push(`/account/${props.launcherid}`):alert("Could not save alias to this launcher id !")}).catch(err=> alert("Could not save alias to this launcher id !"))
     }
+    console.log(props)
   return (
     <Container token = {props.token}>
       <Card>
