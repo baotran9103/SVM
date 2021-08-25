@@ -17,11 +17,7 @@ function AccountPage() {
   const [currentIndex, setcurrentIndex] = useState(0);
   const price = useSelector((state) => state.Utils.chiaPrice);
   let { launcherid } = useParams();
-  const history = useHistory();
-  var token = (history.location.search)
-  token= token? token.replace('?token=',''):null
-  console.log(token)
-  console.log(history)
+ 
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -128,7 +124,8 @@ function AccountPage() {
     <div>
       
       <PopUp
-        farmer_info={farmer_info ? farmer_info.name : launcherid} token={token}
+      refetch={info[0].refetch}
+        farmer_info={farmer_info ? farmer_info.name : launcherid} token={useQuery().get('token')}
         authentication_token={query.get("authentication_token")}
         launcherid={launcherid}
       />

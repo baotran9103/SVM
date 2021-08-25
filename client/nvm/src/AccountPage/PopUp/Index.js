@@ -32,7 +32,7 @@ function Index(props) {
         return response.json(); // parses JSON response into native JavaScript objects
       }
     const SaveEvent = ()  => {
-        postData({ "name" : alias}).then(res=> {console.log(res);res.name=== alias? history.push(`/account/${props.launcherid}`):alert("Could not save alias to this launcher id !")}).catch(err=> alert("Could not save alias to this launcher id !"))
+        postData({ "name" : alias}).then(res=> {props.refetch();res.name=== alias? history.push(`/account/${props.launcherid}`):alert("Could not save alias to this launcher id !")}).catch(err=> alert("Could not save alias to this launcher id !"))
     }
     console.log(props)
   return (

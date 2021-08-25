@@ -20,39 +20,7 @@ import ErrorPage from './utils/ErrorPage'
 import queryString from 'query-string';
 import {createBrowserHistory} from 'history'
 
-function preserveQueryParameters(history, preserve, location) {
-  const currentQuery = queryString.parse(history.location.search);
-  if (currentQuery) {
-      const preservedQuery = {};
-      for (let p of preserve) {
-          const v = currentQuery[p];
-          if (v) {
-              preservedQuery[p] = v;
-          }
-      }
-      if (location.search) {
-          Object.assign(preservedQuery, queryString.parse(location.search));
-      }
-      location.search = queryString.stringify(preservedQuery);
-  }
-  return location;
-}
 
-function createLocationDescriptorObject(location, state) {
-  return typeof location === 'string' ? { pathname: location, state } : location;
-}
-
-function createPreserveQueryHistory(createHistory, queryParameters) {
-  return (options) => {
-      const history = createHistory(options);
-      const oldPush = history.push, oldReplace = history.replace;
-      history.push = (path, state) => oldPush.apply(history, [preserveQueryParameters(history, queryParameters, createLocationDescriptorObject(path, state))]);
-      history.replace = (path, state) => oldReplace.apply(history, [preserveQueryParameters(history, queryParameters, createLocationDescriptorObject(path, state))]);
-      return history;
-  };
-}
-
-const history = createPreserveQueryHistory(createBrowserHistory, ['launcher_id', 'token'])();
 function App() {
   const Darkmode = useSelector(state => state.Utils.Darkmode)
   const [sidebar, setsidebar] = React.useState(false)
@@ -69,9 +37,9 @@ function App() {
     <AppContainer Darkmode={Darkmode}>
       <Navbar data={data} sidebar={sidebar} setsidebar={setsidebar} />
       <Sidebar data={data} sidebar={sidebar} />
-    
+      <Switch>
 
-        <Route history={history} path="/account/:launcherid">
+        <Route  path="/account/:launcherid">
           <AccountPage />
         </Route>
         <Route path="/viewallfarmed">
@@ -86,7 +54,8 @@ function App() {
         <Route exact path="*">
           <PageContent />
         </Route>
-   
+        </Switch>
+    
       <Footer />
       {/* <BackgroundImage Darkmode = {Darkmode}  src="/background3.jpeg" alt="" /> */}
       <ScrollIcon smooth={true} duration={1000} onClick={() => scroll.scrollToTop()}>
