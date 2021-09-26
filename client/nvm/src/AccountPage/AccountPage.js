@@ -110,6 +110,42 @@ function AccountPage() {
     };
   });
 
+
+
+  const CardsInfo = [
+    {
+      value:farmer_info ? farmer_info.points : 0,
+      label:"Farmer Points",
+      sublabel:"",
+      tooltipTitle:"",
+      tooltipDescription:"",
+    }, 
+    {
+      value:info[3].data ? numberWithCommas(info[3].data.plots) : 0,
+      label:"Plot size",
+      sublabel:"",
+      tooltipTitle:"Estimated Plot Size",
+      tooltipDescription:"This is Space Pool's estimate of your total plot size across all harvesters. This is only an estimate and will fluctuate within a range of your actual plot size. Your rewards are NOT calculated off this estimate.",
+    }, 
+    {
+      value:farmer_info ? farmer_info.difficulty : 0,
+      label:"Difficulty",
+      sublabel:"",
+      tooltipTitle:"Farmer Difficulty",
+      tooltipDescription:"Farmer Difficulty in Vast Pool",
+    }, 
+    {
+      value:payoutHistory ? getAmount(payoutHistory) : 0,
+      label:"Total Paid XCH",
+      sublabel:`${payoutHistory
+        ? `$${(getAmount(payoutHistory) * price.usd).toFixed(2)} `
+        : 0}`,
+      tooltipTitle:"Total Paid XCH",
+      tooltipDescription:"The total amount of XCH you have been paid out. See the Payout tab for details.",
+    }, 
+  ]
+
+
   function getAmount(amount) {
     var res = 0;
 
@@ -153,36 +189,23 @@ function AccountPage() {
       </div>
 
       <CardsRow>
-        <Card
-          index={0}
+       {
+         CardsInfo?.map((item,id)=>(
+          <Card
+          key={id}
+          index={id}
           currentCard={currentCard}
           setcurrentCard={setcurrentCard}
-          value={farmer_info ? farmer_info.points : 0}
-          label={"Farmer Points"}
-          sublabel={""}
-          tooltipTitle="Farmer Points"
-          tooltipDescription="Farmer Points in Vast Pool"
+          value={item.value}
+          label={item.label}
+          sublabel={item.sublabel}
+          tooltipTitle={item.tooltipTitle}
+          tooltipDescription={item.tooltipDescription}
         />
-        <Card
-          index={1}
-          currentCard={currentCard}
-          setcurrentCard={setcurrentCard}
-          value={info[3].data ? numberWithCommas(info[3].data.plots) : 0}
-          label={"Plot size"}
-          sublabel={""}
-          tooltipTitle="Estimated Plot Size"
-          tooltipDescription="This is Space Pool's estimate of your total plot size across all harvesters. This is only an estimate and will fluctuate within a range of your actual plot size. Your rewards are NOT calculated off this estimate."
-        />
-        <Card
-          index={2}
-          currentCard={currentCard}
-          setcurrentCard={setcurrentCard}
-          value={farmer_info ? farmer_info.difficulty : 0}
-          label={"Difficulty"}
-          sublabel={""}
-          tooltipTitle="Farmer Difficulty"
-          tooltipDescription="Farmer Difficulty in Vast Pool"
-        />
+         ))
+       }
+    
+       
         {/* <Card
         index = {3}
 
@@ -194,20 +217,7 @@ function AccountPage() {
           tooltipTitle="Farmer Difficulty"
           tooltipDescription="Farmer Difficulty in Vast Pool"
         /> */}
-        <Card
-          index={4}
-          currentCard={currentCard}
-          setcurrentCard={setcurrentCard}
-          value={payoutHistory ? getAmount(payoutHistory) : 0}
-          label={"Total Paid XCH"}
-          sublabel={
-            payoutHistory
-              ? `$${(getAmount(payoutHistory) * price.usd).toFixed(2)} `
-              : 0
-          }
-          tooltipTitle="Total Paid XCH"
-          tooltipDescription="The total amount of XCH you have been paid out. See the Payout tab for details."
-        />
+       
       </CardsRow>
       <AccountChart data={info[3].data ? info[3].data.estimates : []} />
 

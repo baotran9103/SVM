@@ -1,20 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 import RewardsChart from './RewardChart'
+import  {useSelector} from 'react-redux'
 
 function Rewards({data,conversion, chartData}) {
+    const DarkMode = useSelector(state => state.Utils.Darkmode)
+
     return (
         <Container>
             <h2>Your Rewards</h2>
             <Table>
-                <TableItem className='table_header'>
+                <TableItem DarkMode={DarkMode} className='table_header'>
                     <div>Period</div>
                     <div>XCH</div>
                     <div>USD</div>
-                </TableItem>
+                </TableItem >
                 {
                     data.map((item,id)=>(
-                        <TableItem key={id}>
+                        <TableItem DarkMode={DarkMode} key={id}>
                             <div>{item.period}</div>
                             <div>{(item.amount/(10**12)).toFixed(5)}</div>
                             <div>${(item.amount/(10**12)*conversion).toFixed(2)}</div>
@@ -53,7 +56,9 @@ display:grid;
 column-gap:0.25rem;
 grid-template-columns:repeat(3,1fr);
 font-size:1rem;
-padding:1rem 0;
+padding:1rem ;
 border-bottom:1px solid black;
-
+:hover{
+    background:  ${({DarkMode})=>DarkMode?' rgba(0,0,0,1)':'rgba(0,0,0,0.1)'}  ;
+}
 `

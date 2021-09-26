@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import React from 'react'
+import React ,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 import Navbar from './Navbar/Navbar'
 import Footer from './Footer/Footer'
@@ -20,25 +20,35 @@ import ErrorPage from './utils/ErrorPage'
 import queryString from 'query-string';
 import {createBrowserHistory} from 'history'
 
-
+import Test from './Logo/Test'
 function App() {
   const Darkmode = useSelector(state => state.Utils.Darkmode)
-  const [sidebar, setsidebar] = React.useState(false)
+  const [sidebar, setsidebar] = useState(false)
+const [isloaded, setisloaded] = useState(false)
+useEffect(() => {
+  const loadscreen = setInterval(function(){ setisloaded(true) }, 2.4*1000);
+}, [isloaded])
   const { data, isLoading, isError } = useQuery("ChiaPrice", () => fetch(`https://xchscan.com/api/chia-price`).then((res) => res.json()), {
     onSuccess: (res) => store.dispatch(getPrice(res))
   }
   );
-  if (isLoading) {
-    return (<LoadingPage />)
-  } else if (isError) {
-    return (<ErrorPage />)
-  }
+  // if (isLoading) {
+  //   return (<LoadingPage />)
+  // } else if (isError) {
+  //   return (<ErrorPage />)
+  // }
   return (
     <AppContainer Darkmode={Darkmode}>
+        {
+        
+        !isloaded &&<Test Darkmode={Darkmode}/>
+        }
+        {/* <Test /> */}
       <Navbar data={data} sidebar={sidebar} setsidebar={setsidebar} />
       <Sidebar data={data} sidebar={sidebar} />
       <Switch>
-
+      
+        
         <Route  path="/account/:launcherid">
           <AccountPage />
         </Route>
@@ -59,7 +69,8 @@ function App() {
       <Footer />
       {/* <BackgroundImage Darkmode = {Darkmode}  src="/background3.jpeg" alt="" /> */}
       <ScrollIcon smooth={true} duration={1000} onClick={() => scroll.scrollToTop()}>
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <svg xmlns="http://www.w3.org/2000/svg" 
+     xlink="http://www.w3.org/1999/xlink" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
 </svg>
       </ScrollIcon>

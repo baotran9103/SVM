@@ -47,6 +47,7 @@ export const ColumnValue = styled.div`
     min-height:40px;
 
     width:100%;
+   border-bottom:1px solid ${({DarkMode})=>DarkMode?'rgba(255,255,255,0.2)':'rgba(0,0,0,0.2)'} ;
 .Coint_amount{
     display: flex;
     flex-direction: column;

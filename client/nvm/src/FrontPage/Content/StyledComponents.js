@@ -19,11 +19,24 @@ export const Container = styled.div`
 export const ContentImage = styled.img`
   max-width: 500px;
   width: 100%;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1280px) {
     display: none;
   }
 `;
 export const Content = styled.div`
+  letter-spacing:1.5px;
+  font-weight:semi-bold;
+  text-transform: capitalize;
+  .logo{
+    margin-left:2rem;
+    font-size:4rem;
+    font-weight:bold;
+    background: linear-gradient(-45deg, #ff8723 25%, #cc2e5d 15%, #ff8723);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   @media screen and (max-width: 768px) {
     padding: 0;
     align-items: center;
@@ -74,17 +87,26 @@ export const ButtonBound = styled.div`
   padding: 1rem 2rem;
   cursor: pointer;
   color: #fff;
-  /* background: ${theme.colors.brightgreen}; */
-  /* box-shadow: 1px 1px 10px hsla(240,60%,86%,1); */
+  font-family:arial, sans-serif;
+  letter-spacing:1.5px;
+  box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1),
+              0 5px 10px rgba(0,0,0,0.1),
+              0 10px 15px rgba(0,0,0,0.1);
   background: #e37016;
   /* background: linear-gradient(#fea777,#e37016); */
   border-radius: 20px;
-  :hover{
-        background:#fff;
-        color: ${theme.colors.primary};
-  box-shadow: 1px 1px 10px hsla(240,60%,86%,1);
-
-    }
+  transition:0.5s ease all;
+  :hover {
+    transform:scale(1.08);
+    color:#fff;
+  }
+  :active {
+    transform:scale(1);
+    color:${theme.colors.primary};
+    background:white;
+    box-shadow: inset 0 -7px 5px rgba(0,0,0,0.02),
+                inset 0 5px 10px rgba(0,0,0,0.15) ;
+  }
 `;
 
 export const ImageButton = styled.image`
@@ -139,11 +161,11 @@ export const LauncherinputContainer = styled.div`
 `;
 export const LauncherInput = styled.input`
   display: flex;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
   /* border-radius:5px; */
   width: 100%;
   transition: 0.4s all ease-in-out;
-  font-size: 1rem;
+  font-size: 1.1rem;
   border: none;
   overflow: auto;
   color: ${theme.colors.primary};
@@ -156,7 +178,6 @@ export const LauncherInput = styled.input`
   border: none;
   width: 100%;
   /* max-width: 30vw; */
-  font-size: 16px;
   outline: none;
 `;
 export const SearchButton = styled(LinkR)`
@@ -165,8 +186,14 @@ export const SearchButton = styled(LinkR)`
   text-decoration: none;
   /* color: ${theme.colors.primary}; */
   background: ${theme.colors.white};
-  color: black;
-  box-shadow: 1px 1px 5px hsla(240,60%,86%,1);
+  color: #777;
+  /* box-shadow: 1px 1px 5px hsla(240,60%,86%,1); */
+  box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1),
+              0 5px 10px rgba(0,0,0,0.1),
+              0 10px 15px rgba(0,0,0,0.1);
+
+  font-family:arial, sans-serif;
+  letter-spacing:1.5px;
   /* background: ${theme.colors.white};
   color: ${theme.colors.black};
   box-shadow: 4px 4px 5px hsla(240,8%,20%,1),
@@ -186,8 +213,15 @@ export const SearchButton = styled(LinkR)`
   width: 100px;
   padding: 0.25rem 2rem;
   :hover {
-    color: white;
-    background: ${theme.colors.primary};
+    transform:scale(1.08);
+    color:${theme.colors.primary};
+  }
+  :active {
+    transform:scale(1);
+    /* color:${theme.colors.primary}; */
+    background:white;
+    box-shadow: inset 0 -7px 5px rgba(0,0,0,0.02),
+                inset 0 5px 10px rgba(0,0,0,0.15) ;
   }
   @media screen and (max-width: 768px) {
     width: 50px;
@@ -212,22 +246,24 @@ export const SearchFrom = styled.form`
   /* max-width: 80vw; */
   padding: 0.5rem 1rem;
   /* background:${theme.colors.lightPrimary}; */
-  border: 0.5px solid ${theme.colors.gray};
+  /* border: 0.5px solid ${theme.colors.gray}; */
   background:white;
-   /* box-shadow: 4px 4px 4px hsla(255, 8%, 12%, 1), 
-              -4px -4px 4px hsla(255, 8%, 20%, 1), 
-              inset -4px -4px 4px hsla(255, 8%, 20%, 1), 
-              inset 4px 4px 4px hsla(255, 8%, 12%, 1); */
+ 
             ;
    box-shadow: ${({Darkmode})=>Darkmode?`-4px -4px 5px black, 4px 4px 8px hsla(240, 8%, 12%, 1), 
               inset 4px 4px 8px gray, 
               inset -4px -4px 8px gray
-            ;`: `-6px -6px 8px white, 6px 6px 8px hsla(240, 30%, 86%, 1), 
-              inset 6px 6px 8px hsla(240, 30%, 86%, 1), 
-              inset -6px -6px 8px white
+            ;`: `  -10px -10px 15px #fff,
+                10px 10px 15px rgba(0,0,0,0.1),
+                inset -5px -5px 15px #fff,
+                inset 5px 5px 15px rgba(0,0,0,0.1)
+
+                ;
             ;`} ;
+
+   
             
-            color:black;
+            color:#777;
   align-items: center;
   @media screen and (min-width:1080px){
     max-width: 50vw;
@@ -251,12 +287,49 @@ export const SearchFrom = styled.form`
 export const Cards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  margin: 2rem;
+  margin: 1rem 0 2rem 0;
+  width: 100%;
   justify-content: center;
+  position: relative;
+ 
+
+    
+
+    .line {
+      position: absolute;
+      top:50%;
+      left:15%;
+      width: 70%;
+      height:4px;
+      border:1px solid #ff8723; 
+      background:linear-gradient(to right, #ffcf9f 50%, #ff8723 50%, #cc2e5d);
+      background-size: 200%;
+      animation: run  2s infinite;
+    }
+    @keyframes run {
+    0% {
+      background-position:-100%;
+    }
+    50% {
+      background-position:100%;
+
+    }
+    100% {
+      background-position:0%;
+
+    }
+  }
+
+  
+  .card{
+    z-index:2
+  }
 `;
 export const CardContainer = styled.div`
-  margin: 1rem;
+  margin:  2.5rem;
   display: grid;
+  
+  z-index:20;
   background: linear-gradient(
     135deg,
     rgba(225, 225, 225, 0.24),
@@ -271,11 +344,34 @@ export const CardContainer = styled.div`
   align-items: center;
   row-gap: 1rem;
   cursor: default;
+  transition:all 0.4s ease;
+  background: linear-gradient(to right, #ff8723 50%, #ff8723 50%, #cc2e5d);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  box-shadow:  ${({Darkmode})=> Darkmode? `inset  0 5px 5px rgba(255,135,35,0.1),  
+                                            0 5px 5px rgba(255,135,35,0.1),
+                                            0 10px 15px rgba(255,135,35,0.1);` 
+                                            
+                                            : `inset  0 -5px 5px rgba(0,0,0,0.1),
+  
+                                              0 5px 17px rgba(0,0,0,0.1),
+                                              0 10px 15px rgba(0,0,0,0.1);`}     ;
+
+  font-family:arial, sans-serif;
+  letter-spacing:0.5px;
   :hover {
-    margin-top: 0;
-    margin-bottom: 2rem;
+    /* margin-top: 0;
+    margin-bottom: 2rem; */
+    background-position: 100%;
+    box-shadow:       5px 5px 10x rgba(255,135,35,1),
+    -5px -10px 15px rgba(255,135,35,1);
+    transform:scale(1.01)
   }
   .card-tittle {
     font-size: 1.25rem;
   }
+  
 `;

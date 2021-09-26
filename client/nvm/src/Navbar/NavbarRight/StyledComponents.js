@@ -12,7 +12,12 @@ export const NavContainer = styled.div`
 `
 export const NavButton = styled.div`
     display:flex;
-    background:${({id})=> id===1 ? 'transparent':theme.colors.primary};
+    /* background:${({id})=> id===1 ? 'transparent':theme.colors.primary}; */
+    background: linear-gradient(to right, transparent 50%, #ff8723 50%, #cc2e5d);
+    background-size: 200%;
+    /* -webkit-background-clip: text; */
+    /* -webkit-text-fill-color: transparent; */
+    transition: 0.3s ease-out;
     border:0.5px solid ${({id})=> id===1 ?theme.colors.primary :'transparent'};
     color:${({id})=> id===1 ?theme.colors.white :theme.colors.black };
     font-weight:600;
@@ -22,7 +27,12 @@ export const NavButton = styled.div`
     padding:0.5rem 2rem;
     cursor: pointer;
     margin-left:1rem;
-
+    :hover {
+      background-position: -100%;
+    }
+    :active{
+        transform:scale(0.9)
+    }
 
 `
 export const StickerInfo =styled.a`

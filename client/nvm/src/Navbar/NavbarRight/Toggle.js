@@ -34,7 +34,7 @@ const Switch = styled.div`
   background-color:  ${({isactive})=>(isactive?theme.colors.primary:theme.colors.gray)} ;
   border-radius: 28px;
   height: 28px;
-  transition: background-color 0.2s ease-out;
+  transition: background-color 0.3s ease-out;
   width: 54px;
   /* width:100%; */
   margin:  0.25rem;

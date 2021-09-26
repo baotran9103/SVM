@@ -71,7 +71,13 @@ function LeaderBoard() {
 
   return (
     <PageContainer Darkmode={Darkmode}>
-      <h4>Leaderboard</h4>
+      <div className='leaderboard-header'>
+      <h1>Leaderboard</h1>
+
+      </div>
+      <div > 
+
+     
       <PoolStat Darkmode={Darkmode}>
         {/* <PoolStatValueWrapper>
           <div>Global Netspace</div>
@@ -104,7 +110,7 @@ function LeaderBoard() {
         {info[1].data
           ? info[1].data.map((item, id) => (
               <TableItem key={id}>
-                <div># {id + 1}</div>
+                <div> {`${id + 1} ${ id==0?id==1?id==2?'rd':'nd':'st':'th'} `}</div>
                 <a
                   Darkmode={Darkmode}
                   href={`/account/${item.launcherId}`}
@@ -122,7 +128,9 @@ function LeaderBoard() {
               </TableItem>
             ))
           : null}
+          
       </LeaderBoardTable>
+      </div>
     </PageContainer>
   );
 }

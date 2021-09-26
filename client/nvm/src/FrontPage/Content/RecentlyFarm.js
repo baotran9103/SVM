@@ -13,7 +13,7 @@ function RecentlyFarm(props) {
     <div style={{ margin: "0 1rem " }}>
       <Chartheader> Recently Farmed Chia</Chartheader>
       <ChartTable>
-        <ChartItem Darkmode={props.Darkmode}>
+        <ChartItem  Darkmode={props.Darkmode}>
           <Chartitemvisible className='ChartHeader'>Block #</Chartitemvisible>
           <ChartitemHidden className='ChartHeader'>Coin Hash</ChartitemHidden>
           {/* <Chartitemvisible>Farmer</Chartitemvisible> */}
@@ -57,7 +57,12 @@ const Chartheader = styled.h3``;
 const ChartTable = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
+  padding:1rem;
+  border-radius:5px;
+  /* box-shadow: 0 2.6px 6.3px rgb(0 0 0 / 6%), 0 6.3px 16px rgb(0 0 0 / 4%), 0 12px 32.6px rgb(0 0 0 / 3%), 0 21.4px 67.2px rgb(0 0 0 / 2%), 0 43px 184px rgb(0 0 0 / 1%); */
+  max-height: 55vh;
+  overflow: auto;
 `;
 
 const ChartItem = styled.div`
@@ -66,8 +71,7 @@ const ChartItem = styled.div`
   grid-template-columns: 1fr 3fr 3fr 1fr ;
   column-gap: 0.5rem;
   width: 100%;
-  border-bottom:1px solid ${({ Darkmode }) => (Darkmode ? theme.colors.white : theme.colors.black)};;
- 
+  border-bottom:1px solid ${({ Darkmode }) => (Darkmode ? theme.colors.white : '#777')};;
   .ChartHeader{
     font-size:1.15rem;
     font-weight:bold;
@@ -91,7 +95,7 @@ const Chartitemvisible = styled.a`
   overflow: hidden;
   width: 100%;
   text-decoration:none;
-  color:${({ Darkmode }) => (Darkmode ? theme.colors.white : theme.colors.black)};
+  color:${({ Darkmode }) => (Darkmode ? theme.colors.white : '#777')};
 
   a {
     text-decoration: none;

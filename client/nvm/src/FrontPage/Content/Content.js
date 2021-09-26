@@ -71,19 +71,36 @@ function Content() {
   // else if (data[0].isError || data[1].isError) {
   //   return "Server is down! Cannot fetch data !";
   // }
-
+  const cardData = [
+    {tittle:'Net Space',value:`${data[0].data ? data[0].data.netspace : 0} ${
+      data[0].data ? data[0].data.netspaceUnit : ""
+    }`},
+    {tittle:'Farmers',value:`${data[0].data ? data[0].data.farmerOnline : 0}`},
+    {tittle:'Pool Space',value:`${data[0].data ? data[0].data.poolSpace : 0} ${
+      data[0].data ? data[0].data.poolSpaceUnit : ""
+    }`},
+    {tittle:'Block Found',value:`${
+      data[0].data ? numberWithCommas(data[0].data.blockFound) : 0
+    }`},
+    {tittle:'Total Points',value:`${
+      data[0].data ? numberWithCommas(data[0].data.poolTotalPoints) : 0
+    }`},
+  ]
   return (
     <div>
       <div>
         <ContentContainer>
           <Cont>
+            <div style={{display:'flex', justifyContent:'flex-start',alignItems:'center'}}>
             <h4>
-              Welcome to <span>Vast Pool</span>
-            </h4>
+              Welcome to 
+            </h4><div className='logo'>Vast Pool</div>
+            </div>
+            
             <h4>
               {/* Join forces to take back control of predictable Chia farming
             winnings with the official Chia Pooling Protocol */}
-              JOIN ONE OF THE WORLD'S BIGGEST PERFORMING CHIA FARMING POOL
+              Join one of  the world's biggest CHIA farming pool
             </h4>
             <ButtonGroup>
               <ButtonBound>How to join</ButtonBound>
@@ -94,10 +111,22 @@ function Content() {
           <ContentImage src="/etherminegraphic.jpeg" alt="" />
         </ContentContainer>
 
-        <SearchFrom Darkmode={Darkmode} onSubmit={SubmitEvent}>
-          <div style={{ width: "1.5rem", height: "1.5rem" }}>
+      </div>
+      <Cards>
+        {
+          cardData?.map((item,id)=> 
+          
+          <Card className='card' Darkmode={Darkmode} title={item.tittle} value = {item.value} key={id} islast={id==cardData.length-1}/>)
+        }
+      </Cards>
+
+      <SearchFrom Darkmode={Darkmode} onSubmit={SubmitEvent}>
+        <div style={{ display:'flex',justifyContent:'center', }}>
+        <div style={{ width: "2rem", height: "2rem" }}>
             <SearchIcon />
           </div>
+        </div>
+         
           <div style={{ display:'flex',jusifyContent:'space-between',width:'100%'}}>
           <LauncherinputContainer>
             <LauncherInput
@@ -111,39 +140,8 @@ function Content() {
           </div>
           
         </SearchFrom>
-      </div>
-      <Cards>
-        <Card
-          title="Net Space"
-          value={`${data[0].data ? data[0].data.netspace : 0} ${
-            data[0].data ? data[0].data.netspaceUnit : ""
-          }`}
-        />
-        <Card
-          title="Farmers"
-          value={`${data[0].data ? data[0].data.farmerOnline : 0}`}
-        />
-        <Card
-          title="Pool Space"
-          value={`${data[0].data ? data[0].data.poolSpace : 0} ${
-            data[0].data ? data[0].data.poolSpaceUnit : ""
-          }`}
-        />
-        <Card
-          title="Block Found"
-          value={`${
-            data[0].data ? numberWithCommas(data[0].data.blockFound) : 0
-          }`}
-        />
-        <Card
-          title="Total Points"
-          value={`${
-            data[0].data ? numberWithCommas(data[0].data.poolTotalPoints) : 0
-          }`}
-        />
-      </Cards>
       <ChartContainer>
-        <h3>Recent Pool Netspace</h3>
+        <h1>Recent Pool Netspace</h1>
         {typeof data[0].data !== "undefined" ? (
           <Chart
             data={
@@ -178,11 +176,12 @@ function Content() {
 
 export default Content;
 
-function Card({ title, value }) {
+function Card({ title, value ,Darkmode,islast}) {
   return (
-    <CardContainer>
+    <CardContainer Darkmode={Darkmode}>
       <div className="card-tittle">{title}</div>
       <div className="card-value">{value}</div>
+      <span islast={islast}></span>
     </CardContainer>
   );
 }

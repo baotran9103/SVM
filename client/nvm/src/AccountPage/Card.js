@@ -1,20 +1,16 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import ToolTip from "./ToolTip";
 import styled from "styled-components";
 import { theme } from "../utils/Theme";
 
 function Card(props) {
-//   console.log(props.value);
+  //   console.log(props.value);
   // const [toggle, settoggle] = useState(false)
-  function ClickEvent(){
-    if(props.index === props.currentCard){
-      
-      props.setcurrentCard(-1)
-
-    }else{
-     
-    props.setcurrentCard(props.index)
-
+  function ClickEvent() {
+    if (props.index === props.currentCard) {
+      props.setcurrentCard(-1);
+    } else {
+      props.setcurrentCard(props.index);
     }
   }
   return (
@@ -22,20 +18,28 @@ function Card(props) {
       <CardValue>{props.value}</CardValue>
       <CardLabel>
         <CardLabelInfo>{props.label}</CardLabelInfo>
-        <CardLabelToolTip >
-            <div onClick={() => ClickEvent()} >
+         <CardLabelToolTip>
+          <div
+            onMouseEnter={() => ClickEvent()}
+            onMouseLeave={() => ClickEvent()}
+          >
             <Circle />
-
-            </div>
-            <ToolTip  isActive = {props.index === props.currentCard}
-           
-          title={props.tooltipTitle}
-          info={props.tooltipDescription}
-        />
+          </div>
+          <ToolTip
+            isActive={props.index === props.currentCard}
+            title={props.tooltipTitle}
+            info={props.tooltipDescription}
+          />
         </CardLabelToolTip>
-       
       </CardLabel>
       <CardSubLabel>{props.sublabel}</CardSubLabel>
+      
+      {/* <div style={{ overflow: "hidden" }}>
+        <span className="lines line1"></span>
+        <span className="lines line2"></span>
+        <span className="lines line3"></span>
+        <span className="lines line4"></span>
+      </div> */}
     </CardContainer>
   );
 }
@@ -43,50 +47,132 @@ function Card(props) {
 export default Card;
 
 const CardContainer = styled.div`
-display: flex;
-flex-direction:column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-items:center;
   min-width: 172px;
   /* width: 100%; */
   border-radius: 4px;
   margin-bottom: 10px;
-  padding: 8px 0;
+  padding: 12px 0;
   border: 1px solid #dfe1e5;
   position: relative;
+  /* overflow: hidden; */
+  border-radius: 15px;
+  box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1),
+              0 5px 10px rgba(0,0,0,0.1),
+              0 10px 15px rgba(0,0,0,0.1);
+  .lines {
+    position: absolute;
+    /* display:block; */
+    overflow: hidden;
+  }
+  .line1 {
+    top: 0;
+    left:-100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent , #ff8723  , #cc2e5d);
+    animation: animate1 2s linear infinite;
+    @keyframes animate1 {
+      0%{
+        left:-100%;
+      }
+      100%{
+        left:100%;
+      }
+    }
+  }
+  .line2 {
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #ff8723, #cc2e5d);
+    animation: animate2 2s linear infinite;
+    animation-delay:1s;
+
+    @keyframes animate2 {
+      0%{
+        top: -100%;
+      }
+      100%{
+        top: 100%;
+      
+      }
+    }
+  }
+  .line3 {
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #ff8723, #cc2e5d);
+    animation: animate3 2s linear infinite;
+    animation-delay:2s;
+    @keyframes animate3 {
+      0%{
+        right: -100%;
+      }
+      100%{
+        right: 100%;
+     
+      
+      }
+    }
+  }
+
+  .line4 {
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, #cc2e5d, #ff8723  ,transparent);
+    animation: animate4 2s linear infinite;
+    animation-delay:3s;
+
+    @keyframes animate4 {
+      0%{
+        bottom: -100%;
+      }
+      100%{
+        bottom: 100%;
+     
+      }
+    }
+  }
 `;
 const CardValue = styled.div`
   font-size: 28px;
   color: ${theme.colors.primary};
 `;
 const CardLabel = styled.div`
-margin:1rem;
+  margin: 0.5rem;
   display: flex;
   flex-direction: row;
-  
 `;
 const CardLabelToolTip = styled.div`
-    margin-left:1rem;
-    display:  flex ;
-    flex-direction: column;
-    position: relative;
-`
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+`;
 const CardLabelInfo = styled.div`
- 
-    font-size: 12px;
-    color: grey;
-  
-`
+  font-size: 12px;
+  color: grey;
+`;
 const CardSubLabel = styled.div`
   font-size: small;
-  margin-top: 0;
+  margin: 4px;
   text-align: end;
 `;
 
 const Circle = () => {
   return (
     <svg
-    style={{cursor:'pointer'}}
+      style={{ cursor: "pointer" }}
       xmlns="http://www.w3.org/2000/svg"
       width="16"
       height="16"

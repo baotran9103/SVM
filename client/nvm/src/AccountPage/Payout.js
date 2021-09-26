@@ -13,7 +13,7 @@ function Payout(props) {
                     <ColumnHeader>Date</ColumnHeader>
                     {
                         data.map((item,id)=>(
-                            <ColumnValue key={id}> {new Date(item.payDate).toLocaleString()}</ColumnValue>
+                            <ColumnValue DarkMode={DarkMode} key={id}> {new Date(item.payDate).toLocaleString()}</ColumnValue>
                         ))
                     }
                     
@@ -22,7 +22,7 @@ function Payout(props) {
                     <ColumnHeader>CoinID</ColumnHeader>
                     {
                         data.map((item,id)=>(
-                            <ColumnValue key={id}> {item.parentCoin}</ColumnValue>
+                            <ColumnValue DarkMode={DarkMode} key={id}> {item.parentCoin}</ColumnValue>
                         ))
                     }
                    
@@ -31,7 +31,7 @@ function Payout(props) {
                     <ColumnHeader>Block</ColumnHeader>
                     {
                         data.map((item,id)=>(
-                            <ColumnValue key={id}> {item.confirmedAtHeight}</ColumnValue>
+                            <ColumnValue DarkMode={DarkMode} key={id}> {item.confirmedAtHeight}</ColumnValue>
                         ))
                     }
                    

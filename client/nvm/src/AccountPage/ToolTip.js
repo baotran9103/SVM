@@ -18,6 +18,7 @@ export default ToolTip;
 const ToolTipContainer = styled.div`
   /* display:  ${({isActive}) => isActive ? 'block':'none'} ; */
   position: absolute;
+  z-index: 100;
   top: 1.5rem;
   left: -50%;
   transform:translatex(-60%);

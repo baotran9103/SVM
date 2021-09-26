@@ -20,7 +20,7 @@ function ViewAllFarm({Darkmode}) {
     <LoadingPage/>
   }else if (data[0].isError ){ return "Server is down! Cannot fetch data !"}
   return (
-    <div style={{height:'100vh'}}>
+    <div >
   {
           typeof data[0].data !=='undefined' ?  <RecentlyFarm Darkmode={Darkmode} data={data[0].data}  /> : null
         }

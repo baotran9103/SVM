@@ -4,12 +4,24 @@ import { theme } from "../utils/Theme";
 export const PageContainer = styled.div`
   display: flex;
   color: ${({Darkmode})=> Darkmode ? theme.colors.white:theme.colors.black};
-
+  position: relative;
+  /* background:red; */
+  padding:2rem 4rem;
+  
   flex-direction: column;
 
   align-items: center;
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 4rem auto;
+
+  .leaderboard-header{
+    top:-70px;
+    z-index: 2;
+    /* background:gray; */
+    padding:10px 2rem;
+    border-radius:10px;
+    position: absolute;
+  }
   
 `;
 
@@ -40,6 +52,7 @@ export const TableHeader = styled.div`
   font-weight: bold;
   grid-template-columns: 1fr 8fr 1fr 1fr 1fr ;
   margin: 2rem 0;
+  padding:0 1rem;
   justify-items: flex-start;
   column-gap: 1.5rem;
   color: ${({Darkmode})=> Darkmode ? theme.colors.white:theme.colors.black};
@@ -61,7 +74,12 @@ export const TableItem = styled.div`
   border-top: 1px solid #d3d3d3;
   column-gap: 1.5rem;
   text-overflow: ellipsis;
-
+  padding:0 1rem;
+  cursor: pointer;
+  /* transition: 0.1s ease-in all; */
+  :hover{
+    background:rgba(0,0,0,0.05);
+  }
   div {
     display: flex;
     align-items: center;

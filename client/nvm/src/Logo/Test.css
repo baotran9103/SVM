@@ -1,0 +1,147 @@
+.logo-container{
+    position:fixed;
+    width: 100vw;
+    height: 100vh;
+    background:#000;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dark{
+    background:#fff;
+}
+.vast-pool{
+    position:relative;
+    width:360px;
+    height:520px;
+    /* overflow:hidden; */
+    background:#000;
+    display:flex;
+    transform:scale(0.8)
+}
+
+.vast-pool span{
+    position:absolute;
+    width:120px;
+    height:100%;
+    /* background:#ff8723; */
+    background: linear-gradient(  #ff8723 50%, #cc2e5d);
+    border-radius:5px;
+}
+
+.vast-pool span:nth-child(1){
+    top:0;
+    left:-15%;
+    z-index:1;
+    transform:skew(24.5deg);
+    transform-origin: top left;
+    box-shadow:1px 1px 5px #000;
+    border-bottom-right-radius: 25% ;
+}
+.vast-pool span:nth-child(2){
+    top:0;
+    right:15%;
+    width:100px;
+    box-shadow:1px 1px 5px #000;
+    transform:skew(-20deg);
+  
+
+}
+.vast-pool span:nth-child(3){
+    top:0;
+    left:100%;
+    width:75px;
+    box-shadow:1px 1px 5px  #000;
+    border-radius: 0;
+    background:#000;
+    z-index:2;
+   
+
+}
+.vast-pool span:nth-child(4){
+    /* top:5px; */
+    top:-16%;
+    left:0;
+    width:50px;
+    box-shadow:1px 1px 5px #000;
+    transform:rotate(90deg);
+    height:200px;
+    /* z-index:1; */
+}
+
+.vast-pool::before{
+    content:'';
+    position:absolute;
+    bottom:0;
+    background:#000;
+    z-index:2;
+    /* border-top-left-radius: 100%; */
+    border-top-right-radius: 100%;
+    transform:scaleX(1.5);
+    width:100%;
+    height:120px;
+   
+}
+.vast-pool h3{
+    /* color:#fff; */
+    color: #cf4a72;
+  
+    text-align:end;
+    align-items:start;
+    font-family:arial;
+    font-size: 3rem;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: -10%;
+    z-index:3;
+    right:-2.5%;
+    margin:0;
+    padding:0;
+    letter-spacing:10px;
+
+    background: linear-gradient(to left, #000 50%, #cc2e5d 50%, #cc2e5d);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: 0.5s ease-out;
+    color: #fff;
+    /* height: 100px; */
+    animation: runText 1.5s linear forwards;
+ 
+}
+
+@keyframes runText {
+    0%{
+        background-position: 100%;
+       
+    }100%{
+      background-position: 0%;
+      
+
+    }
+}
+
+.logo-container ::after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    width:400%;
+    height:100%;
+    background: linear-gradient(to right, transparent,#000,#000);
+    z-index:4;
+    animation: animate 2s linear forwards;
+}
+@keyframes animate{
+    0%{
+        right: 0;
+       
+    }
+    100%{
+        
+
+        right: -1000%;
+    }
+}

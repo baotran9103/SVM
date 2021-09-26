@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Toggle from "./Toggle";
 import {
   NavContainer,
@@ -13,8 +13,8 @@ import ChartPopUp from "./ChartPopUp";
 
 
 function NavbarRight({Darkmode,data}) {
-  const [launcherid, setlauncherid] = React.useState("");
-  const [showchart, setshowchart] = React.useState(false);
+  const [launcherid, setlauncherid] = useState("");
+  const [showchart, setshowchart] = useState(false);
 
   var config = {
     method: 'get',
@@ -42,12 +42,12 @@ function NavbarRight({Darkmode,data}) {
         onMouseEnter={() => setshowchart(true)}
         onMouseLeave={() => setshowchart(false)}
       >
-        <StickerInfoData  Darkmode={Darkmode}> <div className='NavPrice'>${data.usd}</div> </StickerInfoData>
+        <StickerInfoData  Darkmode={Darkmode}> <div className='NavPrice'>${data?.usd}</div> </StickerInfoData>
         <StickerPercent ispositive={1.16 > 0}>USD/XCH</StickerPercent>
         {/* <ChartPopUp showchart={showchart} /> */}
       </StickerInfo>
       <NavButton id = {1}>Join Now</NavButton>
-      <NavButton id = {2}>Contact Us</NavButton>
+      <NavButton id = {1}>Contact Us</NavButton>
       {/* <LauncherinputContainer>
         <LauncherInput
           value={launcherid}

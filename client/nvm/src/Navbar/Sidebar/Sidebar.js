@@ -32,7 +32,7 @@ function Sidebar(props) {
                 <div style={{ display: 'flex' }}>
                     <Toggle />
                     <StickerInfo href='https://coinmarketcap.com/currencies/chia-network/' >
-                        <StickerInfoData Darkmode={Darkmode}> ${props.data.usd}</StickerInfoData>
+                        <StickerInfoData Darkmode={Darkmode}> ${props.data?.usd}</StickerInfoData>
                         <StickerPercent ispositive={1.16 > 0}>USD/XCH</StickerPercent>
 
 
