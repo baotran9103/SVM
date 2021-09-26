@@ -82,21 +82,39 @@ export const LauncherInput = styled.input`
     } 
 
 `
-export const SearchButton = styled(LinkR)`
+export const SearchButton = styled.button`
+border:none;
     display: flex;
-    background: transparent;
     text-decoration:none;
     color: ${theme.colors.primary};
     cursor: pointer;
     align-items:center;
     justify-content: center;
-    border-radius:5px;
-    border:1px solid;
+    border-radius:15px;
+    /* border:1px solid; */
+    background: ${theme.colors.white};
     padding:0.25rem 0.75rem;
     transition:all 0.3s ease;
     margin-left:0.5rem;
-    :hover{
+    box-shadow: inset 0 -5px 5px rgba(0,0,0,0.1),
+              0 5px 10px rgba(0,0,0,0.1),
+              0 10px 15px rgba(0,0,0,0.1);
+  font-family:arial, sans-serif;
+  letter-spacing:1.5px;
+    padding:8px 12px;
+    margin:12px;
+  :hover{
         background:${theme.colors.primary};
         color:#fff;
+    transform:scale(1.08);
+
     }
+    :active {
+    transform:scale(1);
+    /* color:${theme.colors.primary}; */
+    color:#fff;
+
+    box-shadow: inset 0 -7px 5px rgba(0,0,0,0.02),
+                inset 0 5px 10px rgba(0,0,0,0.15) ;
+  }
 `

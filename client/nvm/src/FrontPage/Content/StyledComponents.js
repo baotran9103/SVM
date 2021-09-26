@@ -326,15 +326,30 @@ export const Cards = styled.div`
   }
 `;
 export const CardContainer = styled.div`
+h4{
+  margin:0;
+   background: linear-gradient(to right, #ff8723 50%, #ff8723 50%, #cc2e5d);
+  
+  transition:all 0.4s ease;
+  background-size: 200%;
+  -webkit-background-clip: text;
+  
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family:arial, sans-serif;
+  letter-spacing:0.5px;
+  :hover {
+    /* margin-top: 0;
+    margin-bottom: 2rem; */
+    background-position: 100%;
+   
+  }
+}
   margin:  2.5rem;
   display: grid;
-  
+    text-align: center;
   z-index:20;
-  background: linear-gradient(
-    135deg,
-    rgba(225, 225, 225, 0.24),
-    rgba(255, 207, 159, 0.7)
-  );
+ 
   width: 120px;
   box-shadow: 1px 1px 5px rgba(255, 207, 159, 0.5);
   color: ${theme.colors.primary};
@@ -345,12 +360,8 @@ export const CardContainer = styled.div`
   row-gap: 1rem;
   cursor: default;
   transition:all 0.4s ease;
-  background: linear-gradient(to right, #ff8723 50%, #ff8723 50%, #cc2e5d);
-  background-size: 200%;
-  -webkit-background-clip: text;
+  /* background: linear-gradient(to right, #ff8723 50%, #ff8723 50%, #cc2e5d); */
   
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
   box-shadow:  ${({Darkmode})=> Darkmode? `inset  0 5px 5px rgba(255,135,35,0.1),  
                                             0 5px 5px rgba(255,135,35,0.1),
                                             0 10px 15px rgba(255,135,35,0.1);` 

@@ -6,14 +6,14 @@ import { StickerInfo, StickerInfoData, StickerPercent, LauncherinputContainer, L
 import Toggle from '../NavbarRight/Toggle'
 import { useSelector } from 'react-redux'
 import { useQuery } from "react-query";
-
+import { useHistory } from 'react-router-dom'
 import LoadingPage from '../../utils/LoadingPage'
 import ErrorPage from '../../utils/ErrorPage'
 function Sidebar(props) {
     const [launcherid, setlauncherid] = React.useState("")
     const [showchart, setshowchart] = React.useState(false)
     const Darkmode = useSelector(state => state.Utils.Darkmode)
-
+    const history = useHistory()
 
     function InputChangeHandler(e) {
         e.preventDefault();
@@ -38,11 +38,14 @@ function Sidebar(props) {
 
                     </StickerInfo>
                 </div>
+                <form onSubmit={(e)=>{e.preventDefault();history.push(`/account/${launcherid}`) }}>
                 <LauncherinputContainer>
                     <LauncherInput value={launcherid} onChange={InputChangeHandler} type='text' placeholder='Launcher Id or alias' />
 
                 </LauncherinputContainer>
                 <SearchButton to={`/account/${launcherid}`}> Search</SearchButton>
+                </form>
+              
             </LinksContainer>
 
 
@@ -61,6 +64,8 @@ export const SidebarContainer = styled.div`
     transform: ${({ sidebar }) => sidebar ? 'translate(0,0)' : 'translateY(-120%)'};
     transition:all 0.4s ease-in-out;
     position:relative;
+    /* background:black; */
+    /* color:#fff; */
     @media screen and (min-width:768px){
         display:none;
     }
@@ -73,9 +78,11 @@ const LinksContainer = styled.div`
     flex-direction: column;
     justify-items: start;
     align-items: start;
-    background:transparent;
+    /* background:black; */
     width:100%;
     row-gap:1rem;
+    /* color:white; */
+
     a{
         color:${({Darkmode})=> Darkmode?"white":"black"};
     }

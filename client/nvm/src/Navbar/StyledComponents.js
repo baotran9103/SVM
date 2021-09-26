@@ -51,7 +51,11 @@ export const Navbar_logo = styled.div`
     line-height: inherit;
     white-space: nowrap;
     cursor: pointer;
-    background: linear-gradient(to right, #ff8723 50%, #ff8723 50%, #cc2e5d);
+    
+
+
+    h4{
+        background: linear-gradient(to right, #ff8723 50%, #ff8723 50%, #cc2e5d);
     background-size: 200%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -61,12 +65,15 @@ export const Navbar_logo = styled.div`
         /* transform:scale(1.08) */
         background-position: 100%;
     }
+    }
+    
 `
 export const MenuContainer = styled.div`
     width: 2rem;
     height: 2rem;
     cursor: pointer;
     /* justify-content:flex-end; */
+    margin-right:12px;
     
  color: white;
     @media screen and (min-width:768px){

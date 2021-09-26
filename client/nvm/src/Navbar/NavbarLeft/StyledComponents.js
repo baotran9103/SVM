@@ -39,6 +39,9 @@ export const NavDiscord = styled.a`
   text-decoration: none;
   padding: 0.5rem;
   text-align: center;
+  margin:0;
+  color:white;
+
 `;
 export const NavLink = styled(LinkR)`
   /* text-decoration:none;
@@ -46,9 +49,14 @@ export const NavLink = styled(LinkR)`
     text-align:center; */
 
   /* font-size: 60px; */
-
+  color:white;
+  padding: 0.5rem;
+  text-decoration: none;
+  transition: 0.5s ease all;
+  
   :hover {
-    background-position: -100%;
+    /* background-position: -100%; */
+    background: rgba(0,0,0,0.1);
   }
 `;
 

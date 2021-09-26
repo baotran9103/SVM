@@ -179,8 +179,8 @@ export default Content;
 function Card({ title, value ,Darkmode,islast}) {
   return (
     <CardContainer Darkmode={Darkmode}>
-      <div className="card-tittle">{title}</div>
-      <div className="card-value">{value}</div>
+      <h4 className="card-tittle">{title}</h4>
+      <h4 className="card-value">{value}</h4>
       <span islast={islast}></span>
     </CardContainer>
   );
