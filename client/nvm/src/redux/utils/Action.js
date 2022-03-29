@@ -8,8 +8,9 @@
      }
  }
  export const getPrice = (data)=>{
+    //  console.log('dispatch',data)
      return {
          type:t.getPrice,
-         payload:data
+         payload:data?.market_data?.current_price.usd
      }
  }

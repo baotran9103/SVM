@@ -56,8 +56,8 @@ const data = [
 ];
 
 export default function App(props) {
-  console.log(
-props.data)
+//   console.log(
+// props.data)
 
   return (
     <div style={{width: '100%',height: '100%'}}>

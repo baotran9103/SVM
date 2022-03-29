@@ -31,8 +31,8 @@ function Sidebar(props) {
                 <NavLink to='/leaderboard'>LeaderBoard</NavLink>
                 <div style={{ display: 'flex' }}>
                     <Toggle />
-                    <StickerInfo href='https://coinmarketcap.com/currencies/chia-network/' >
-                        <StickerInfoData Darkmode={Darkmode}> ${props.data?.usd}</StickerInfoData>
+                    <StickerInfo href='https://www.coingecko.com/en/coins/chia' >
+                        <StickerInfoData Darkmode={Darkmode}> ${props.data?props.data?.market_data?.current_price.usd:''}</StickerInfoData>
                         <StickerPercent ispositive={1.16 > 0}>USD/XCH</StickerPercent>
 
 

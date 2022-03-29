@@ -5,7 +5,7 @@ import {useHistory} from 'react-router-dom'
 function Index(props) {
     let history = useHistory();
     // console.log(props.token)
-    console.log(props.farmer_info)
+    // console.log(props.farmer_info)
     const [alias, setalias] = useState("")
    
     
@@ -13,7 +13,7 @@ function Index(props) {
     useEffect(() => {
       setalias(props.farmer_info)
     }, [props.farmer_info])
-    console.log(alias)
+    // console.log(alias)
     async function postData( data = {}) {
         var url =  `https://api.vastpool.net/farmer/${props.launcherid}/${props.token}`
         const response = await fetch(url, {
@@ -34,7 +34,7 @@ function Index(props) {
     const SaveEvent = ()  => {
         postData({ "name" : alias}).then(res=> {props.refetch();res.name=== alias? history.push(`/account/${props.launcherid}`):alert("Could not save alias to this launcher id !")}).catch(err=> alert("Could not save alias to this launcher id !"))
     }
-    console.log(props)
+    // console.log(props)
   return (
     <Container token = {props.token}>
       <Card>
