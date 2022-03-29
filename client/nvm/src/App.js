@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import React ,{useState,useEffect} from 'react'
 import styled from 'styled-components'
 import Navbar from './Navbar/Navbar'
@@ -28,8 +28,20 @@ const [isloaded, setisloaded] = useState(false)
 useEffect(() => {
   const loadscreen = setInterval(function(){ setisloaded(true) }, 2.4*1000);
 }, [isloaded])
-  const { data, isLoading, isError } = useQuery("ChiaPrice", () => fetch(`https://xchscan.com/api/chia-price`).then((res) => res.json()), {
-    onSuccess: (res) => store.dispatch(getPrice(res))
+var requestOptions = {
+  method: "GET",
+ 
+  qs: {
+start: 1,
+limit: 5000,
+convert: "USD"
+  },
+  json: true,
+  gzip: true
+};
+var url="https://api.coingecko.com/api/v3/coins/chia";
+  const { data, isLoading, isError } = useQuery("ChiaPrice", () => fetch(url, requestOptions).then((res) => res.json()), {
+    onSuccess: (res) => {store.dispatch(getPrice(res))}
   }
   );
   // if (isLoading) {

@@ -11,7 +11,7 @@ export default function Reducer(state=initialState,action){
             state.Darkmode = action.payload;
             return state;
         case t.getPrice:
-            state.chiaPrice = action.payload;
+            state.chiaPrice = {usd:action.payload,btc:0};
             return state;
         default:
             return state;

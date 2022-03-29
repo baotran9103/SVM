@@ -38,11 +38,11 @@ function NavbarRight({Darkmode,data}) {
     <NavContainer>
       <Toggle />
       <StickerInfo
-        href="https://coinmarketcap.com/currencies/chia-network/"
+        href="https://www.coingecko.com/en/coins/chia"
         onMouseEnter={() => setshowchart(true)}
         onMouseLeave={() => setshowchart(false)}
       >
-        <StickerInfoData  Darkmode={Darkmode}> <div className='NavPrice'>${data?.usd}</div> </StickerInfoData>
+        <StickerInfoData  Darkmode={Darkmode}> <div className='NavPrice'>${data?data?.market_data?.current_price.usd:''}</div> </StickerInfoData>
         <StickerPercent ispositive={1.16 > 0}>USD/XCH</StickerPercent>
         {/* <ChartPopUp showchart={showchart} /> */}
       </StickerInfo>
